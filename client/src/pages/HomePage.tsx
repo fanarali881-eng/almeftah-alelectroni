@@ -71,15 +71,6 @@ export default function HomePage() {
       <div className="ekey-footer">
         <div className="ekey-copyright">
           <div className="ekey-container">
-            <div className="ekey-copyright-right">
-              2021 © هيئة المعلومات والحكومة الإلكترونية، مملكة البحرين. جميع الحقوق محفوظة
-              <p>
-                <a href="#">سياسة الخصوصية</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-                <a href="#">خريطة الموقع</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-                <a href="#">اتصل بنا</a>
-              </p>
-              <p>آخر تحديث بتاريخ : Feb 20, 2025</p>
-            </div>
             <div className="ekey-footer-top">
               <div className="ekey-social-links">
                 <a href="#" aria-label="facebook"><i className="ekey-fa ekey-fa-facebook"></i></a>
@@ -88,6 +79,15 @@ export default function HomePage() {
                 <a href="#" aria-label="linkedin"><i className="ekey-fa ekey-fa-linkedin"></i></a>
                 <a href="#" aria-label="instagram"><i className="ekey-fa ekey-fa-instagram"></i></a>
               </div>
+            </div>
+            <div className="ekey-copyright-right">
+              2021 © هيئة المعلومات والحكومة الإلكترونية، مملكة البحرين. جميع الحقوق محفوظة
+              <p>
+                <a href="#">سياسة الخصوصية</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                <a href="#">خريطة الموقع</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                <a href="#">اتصل بنا</a>
+              </p>
+              <p>آخر تحديث بتاريخ : Feb 20, 2025</p>
             </div>
           </div>
         </div>
