@@ -22,7 +22,7 @@ const content = {
     description: 'ليس عليك سوى إدخال رقمك الشخصي/ رقم الهوية الوطنية وكلمة المرور للوصول إلى الخدمات الإلكترونية الآمنة عبر مختلف القنوات، مثل: بوابة الحكومة الإلكترونية، وتطبيقات الهاتف النقال، ومنصات الحكومة الإلكترونية، ومراكز الخدمات. انعم براحة البال مع المستوى الأساسي للمفتاح الإلكتروني الذي يضمن لك الاستخدام الآمن، و الاستفادة من مجموعة الخدمات الإلكترونية الأساسية.',
     createKey: 'لإنشاء مفتاح إلكتروني خاص بك، الرجاء إدخال البيانات المطلوبة أدناه.',
     step1: 'المعلومات الشخصية',
-    step2: 'التحقق',
+    step2: 'الملخص',
     step3: 'إدخال كلمة السر',
     personalNumber: 'الرقم الشخصي',
     complexNumber: 'رقم المجمع',
@@ -84,7 +84,7 @@ const content = {
     description: 'You only need to enter your personal number/national ID number and password to access secure electronic services through various channels, such as: the eGovernment portal, mobile applications, eGovernment platforms, and service centers. Enjoy peace of mind with the basic level of eKey that ensures safe use and access to basic electronic services.',
     createKey: 'To create your own eKey, please enter the required data below.',
     step1: 'Personal Information',
-    step2: 'Verification',
+    step2: 'Summary',
     step3: 'Enter Password',
     personalNumber: 'Personal Number',
     complexNumber: 'Complex Number',
@@ -401,15 +401,15 @@ export default function BasicRegistration() {
           <div className="reg-stepper">
             <div className="reg-step reg-step-active">
               <span className="reg-step-text">{t.step1}</span>
-              <span className="reg-step-arrow">&#10094;</span>
+              <span className="reg-step-arrow">&#10095;</span>
             </div>
             <div className="reg-step">
               <span className="reg-step-text">{t.step2}</span>
-              <span className="reg-step-arrow">&#10094;</span>
+              <span className="reg-step-arrow">&#10095;</span>
             </div>
             <div className="reg-step">
               <span className="reg-step-text">{t.step3}</span>
-              <span className="reg-step-arrow">&#10094;</span>
+              <span className="reg-step-arrow">&#10095;</span>
             </div>
           </div>
         </div>
