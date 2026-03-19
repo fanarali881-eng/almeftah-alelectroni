@@ -25,9 +25,11 @@ export default function HomePage() {
                 <img src="/images/logo.jpg" alt="eKey logo" />
               </a>
             </div>
-            <a href="#" className="ekey-lang">English</a>
-            <a className="ekey-lang">&nbsp;</a>
-            <a href="#" className="ekey-login-btn">دخول | </a>
+            <div className="ekey-header-left">
+              <a href="#" className="ekey-login-btn">دخول</a>
+              <span className="ekey-lang-separator">|</span>
+              <a href="#" className="ekey-lang">English</a>
+            </div>
           </div>
         </nav>
         <div className="ekey-container">

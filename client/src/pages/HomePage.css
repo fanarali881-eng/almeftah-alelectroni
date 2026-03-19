@@ -57,12 +57,12 @@
   max-width: 1000px;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  flex-direction: row-reverse;
+  justify-content: space-between;
+  flex-direction: row;
 }
 
 .ekey-navbar-header {
-  float: right;
+  order: 1;
 }
 
 .ekey-navbar-brand {
@@ -72,20 +72,32 @@
 
 .ekey-navbar-brand img {
   display: block;
-  max-height: 100px;
+  max-height: 120px;
+}
+
+.ekey-header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  order: 2;
+  margin-top: 40px;
 }
 
 .ekey-lang,
 .ekey-login-btn {
-  float: left;
   display: block;
-  margin-top: 54px;
   padding: 0;
   border-radius: 6px;
   font-weight: 300;
   color: #666 !important;
   text-decoration: none !important;
   font-size: 16px !important;
+}
+
+.ekey-lang-separator {
+  color: #666;
+  font-weight: 300;
+  font-size: 16px;
 }
 
 .ekey-lang:hover,
