@@ -55,7 +55,7 @@ export default function HomePage() {
   }, []);
 
   const handleRegister = () => {
-    setLocation("/summary-payment");
+    setActiveTab('manage');
   };
 
   const t = content[lang];
