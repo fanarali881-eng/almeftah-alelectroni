@@ -324,6 +324,215 @@
   font-family: FontAwesome;
 }
 
+/* Tab Content */
+.ekey-tab-content {
+  text-align: right;
+  padding: 20px 0;
+}
+
+.ekey-tab-content h1 {
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.ekey-tab-content h2 {
+  font-size: 22px;
+  font-weight: bold;
+  color: #004f98;
+  margin-top: 25px;
+  margin-bottom: 15px;
+}
+
+.ekey-tab-content h3 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.ekey-tab-content p {
+  font-size: 14px;
+  line-height: 24px;
+  color: #333;
+  margin-bottom: 10px;
+  text-align: right;
+}
+
+.ekey-tab-content a {
+  color: #004f98;
+  text-decoration: none;
+}
+
+.ekey-tab-content a:hover {
+  text-decoration: underline;
+}
+
+/* Services Table */
+.ekey-services-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 14px;
+}
+
+.ekey-services-table th {
+  background: #004f98;
+  color: #fff;
+  padding: 12px 15px;
+  text-align: right;
+  font-weight: bold;
+}
+
+.ekey-services-table td {
+  padding: 10px 15px;
+  border-bottom: 1px solid #ddd;
+  text-align: right;
+}
+
+.ekey-services-table tr:nth-child(even) {
+  background: #f5f5f5;
+}
+
+.ekey-services-table tr:hover {
+  background: #e8f0fe;
+}
+
+/* Login Form */
+.ekey-login-page {
+  text-align: center;
+}
+
+.ekey-login-form {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 30px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  text-align: right;
+}
+
+.ekey-login-form h2 {
+  text-align: center;
+  color: #004f98;
+  margin-bottom: 20px;
+}
+
+.ekey-form-group {
+  margin-bottom: 15px;
+}
+
+.ekey-form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+  font-size: 14px;
+}
+
+.ekey-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  font-family: "GE SS Two", sans-serif;
+  box-sizing: border-box;
+}
+
+.ekey-input:focus {
+  border-color: #004f98;
+  outline: none;
+  box-shadow: 0 0 3px rgba(0,79,152,0.3);
+}
+
+.ekey-form-link {
+  margin: 8px 0;
+  font-size: 13px;
+}
+
+.ekey-form-link a {
+  color: #004f98;
+  text-decoration: none;
+}
+
+.ekey-form-link a:hover {
+  text-decoration: underline;
+}
+
+.ekey-submit-btn {
+  width: 100%;
+  padding: 12px;
+  background: #004f98;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: "GE SS Two", sans-serif;
+  margin-top: 10px;
+}
+
+.ekey-submit-btn:hover {
+  background: #003d7a;
+}
+
+/* Contact Info */
+.ekey-contact-info {
+  text-align: right;
+  margin: 15px 0;
+}
+
+.ekey-contact-info p {
+  margin: 5px 0;
+}
+
+/* FAQ */
+.ekey-faq-list {
+  text-align: right;
+}
+
+.ekey-faq-item {
+  margin-bottom: 20px;
+  padding: 15px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  border-right: 4px solid #004f98;
+}
+
+.ekey-faq-item h3 {
+  color: #004f98;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.ekey-faq-item p {
+  font-size: 14px;
+  line-height: 22px;
+  color: #333;
+}
+
+/* LTR support */
+.ekey-wrapper[dir="ltr"] .ekey-tab-content,
+.ekey-wrapper[dir="ltr"] .ekey-tab-content p,
+.ekey-wrapper[dir="ltr"] .ekey-services-table th,
+.ekey-wrapper[dir="ltr"] .ekey-services-table td,
+.ekey-wrapper[dir="ltr"] .ekey-contact-info,
+.ekey-wrapper[dir="ltr"] .ekey-faq-list,
+.ekey-wrapper[dir="ltr"] .ekey-login-form {
+  text-align: left;
+}
+
+.ekey-wrapper[dir="ltr"] .ekey-faq-item {
+  border-right: none;
+  border-left: 4px solid #004f98;
+}
+
 /* Responsive */
 @media (max-width: 767px) {
   .ekey-navbar-brand img {
