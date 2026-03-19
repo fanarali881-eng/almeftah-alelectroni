@@ -55,7 +55,7 @@ export default function HomePage() {
   }, []);
 
   const handleRegister = () => {
-    setLocation('/login');
+    setLocation('/manage-account');
   };
 
   const handleLogin = () => {
