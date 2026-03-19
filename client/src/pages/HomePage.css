@@ -200,6 +200,12 @@
   color: #000;
 }
 
+.ekey-register-text-en {
+  font-size: 20px !important;
+  line-height: 120% !important;
+  margin: -10px 0 0 !important;
+}
+
 /* Home Page Writeups */
 .ekey-home-page-writups {
   text-align: center;

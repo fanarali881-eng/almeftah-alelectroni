@@ -101,7 +101,7 @@ export default function HomePage() {
             <div className="ekey-banner"></div>
           </div>
           <div className="ekey-register" onClick={handleRegister}>
-            <b><p className="ekey-register-text">{t.registerBtn}</p></b>
+            <b><p className={`ekey-register-text ${lang === 'en' ? 'ekey-register-text-en' : ''}`}>{t.registerBtn}</p></b>
           </div>
         </>
       )}
