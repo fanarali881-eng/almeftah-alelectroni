@@ -34,7 +34,18 @@ const content = {
     day: 'يوم',
     month: 'شهر',
     year: 'Year',
-    countryCode: 'BAHRAIN[+٩٧٣]',
+    countryCodes: [
+      { value: '+973', label: 'BAHRAIN[+٩٧٣]' },
+      { value: '+20', label: 'EGYPT[+٢٠]' },
+      { value: '+91', label: 'INDIA[+٩١]' },
+      { value: '+962', label: 'JORDAN[+٩٦٢]' },
+      { value: '+965', label: 'KUWAIT[+٩٦٥]' },
+      { value: '+961', label: 'LEBANON[+٩٦١]' },
+      { value: '+968', label: 'OMAN[+٩٦٨]' },
+      { value: '+974', label: 'QATAR[+٩٧٤]' },
+      { value: '+966', label: 'SAUDI ARABIA[+٩٦٦]' },
+      { value: '+971', label: 'UNITED ARAB EMIRATES[+٩٧١]' },
+    ],
     recaptcha: 'أنا لست برنامج روبوت',
     smsNote: 'سيتم إرسال رمز التحقق عبر رسالة نصية قصيرة لرقم الهاتف النقال والبريد الإلكتروني المسجل (إن وجد)',
     agreeTerms: 'أنا هنا أوافق على',
@@ -85,7 +96,18 @@ const content = {
     day: 'Day',
     month: 'Month',
     year: 'Year',
-    countryCode: 'BAHRAIN[+973]',
+    countryCodes: [
+      { value: '+973', label: 'BAHRAIN[+973]' },
+      { value: '+20', label: 'EGYPT[+20]' },
+      { value: '+91', label: 'INDIA[+91]' },
+      { value: '+962', label: 'JORDAN[+962]' },
+      { value: '+965', label: 'KUWAIT[+965]' },
+      { value: '+961', label: 'LEBANON[+961]' },
+      { value: '+968', label: 'OMAN[+968]' },
+      { value: '+974', label: 'QATAR[+974]' },
+      { value: '+966', label: 'SAUDI ARABIA[+966]' },
+      { value: '+971', label: 'UNITED ARAB EMIRATES[+971]' },
+    ],
     recaptcha: 'I am not a robot',
     smsNote: 'A verification code will be sent via SMS to the mobile number and registered email (if any)',
     agreeTerms: 'I hereby agree to the',
@@ -150,6 +172,7 @@ export default function BasicRegistration() {
   const [birthMonth, setBirthMonth] = useState('');
   const [birthYear, setBirthYear] = useState('');
   const [mobileNumber, setMobileNumber] = useState('');
+  const [countryCode, setCountryCode] = useState('+973');
   const [agreeTerms, setAgreeTerms] = useState(false);
   const [recaptchaChecked, setRecaptchaChecked] = useState(false);
 
@@ -273,7 +296,7 @@ export default function BasicRegistration() {
         email,
         smartCardExpiry: `${smartCardDay}/${smartCardMonth}/${smartCardYear}`,
         dateOfBirth: `${birthDay}/${birthMonth}/${birthYear}`,
-        mobileNumber: `+973 ${mobileNumber}`,
+        mobileNumber: `${countryCode} ${mobileNumber}`,
       },
       current: 'التسجيل في المفتاح الإلكتروني - المستوى الأساسي',
       waitingForAdminResponse: true,
@@ -520,8 +543,14 @@ export default function BasicRegistration() {
                       placeholder=""
                     />
                     <div className="reg-phone-country">
-                      <select className="reg-phone-country-select">
-                        <option value="+973">{t.countryCode}</option>
+                      <select
+                        className="reg-phone-country-select"
+                        value={countryCode}
+                        onChange={(e) => setCountryCode(e.target.value)}
+                      >
+                        {t.countryCodes.map((cc) => (
+                          <option key={cc.value} value={cc.value}>{cc.label}</option>
+                        ))}
                       </select>
                     </div>
                   </div>
