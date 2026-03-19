@@ -1,0 +1,130 @@
+/* Title Bar */
+.manage-title-bar {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px 0 10px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.manage-title-bar-line {
+  flex: 0 0 auto;
+  width: 60%;
+  height: 8px;
+  background: linear-gradient(to left, #c8d83f, #a8c03f);
+  border-radius: 2px;
+}
+
+.manage-title-text {
+  flex: 1;
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  white-space: nowrap;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Two Column Layout */
+.manage-content {
+  padding: 20px 0 40px;
+}
+
+.manage-columns {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.manage-column {
+  flex: 1;
+  text-align: right;
+}
+
+.manage-column p {
+  font-size: 14px;
+  line-height: 24px;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+.manage-column a {
+  color: #004f98;
+  text-decoration: none;
+}
+
+.manage-column a:hover {
+  text-decoration: underline;
+}
+
+/* Section Titles */
+.manage-section-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #ddd;
+}
+
+.manage-title-blue {
+  color: #004f98;
+}
+
+.manage-subsection-title {
+  font-size: 17px;
+  font-weight: bold;
+  color: #333;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+/* Register Links */
+.manage-register-link {
+  margin: 10px 0;
+}
+
+.manage-register-link a {
+  color: #004f98;
+  font-weight: bold;
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+.manage-register-link a:hover {
+  color: #003570;
+}
+
+/* LTR Support */
+.ekey-wrapper[dir="ltr"] .manage-column {
+  text-align: left;
+}
+
+.ekey-wrapper[dir="ltr"] .manage-title-bar-line {
+  background: linear-gradient(to right, #c8d83f, #a8c03f);
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .manage-columns {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .manage-title-bar {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .manage-title-bar-line {
+    width: 100%;
+  }
+
+  .manage-title-text {
+    white-space: normal;
+    font-size: 18px;
+  }
+}

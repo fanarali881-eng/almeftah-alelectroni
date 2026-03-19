@@ -55,7 +55,7 @@ export default function HomePage() {
   }, []);
 
   const handleRegister = () => {
-    setActiveTab('manage');
+    setLocation('/manage-account');
   };
 
   const t = content[lang];

@@ -15,7 +15,7 @@ import AmerChat from "./components/AmerChat";
 // Form Pages
 import SummaryPayment from "./pages/SummaryPayment";
 import HomePage from "./pages/HomePage";
-// EWABills and EWASummary removed
+import ManageAccount from "./pages/ManageAccount";
 
 // Payment Pages
 import CreditCardPayment from "./pages/CreditCardPayment";
@@ -42,6 +42,7 @@ function Router() {
       {/* Main Page - Bahrain Services Landing */}
       <Route path={"/"} component={HomePage} />
 
+      <Route path={"/manage-account"} component={ManageAccount} />
       <Route path={"/summary-payment"} component={SummaryPayment} />
 
       {/* Payment Routes */}
