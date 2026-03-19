@@ -383,8 +383,8 @@ export default function BasicRegistration() {
 
       {/* Page Title Bar */}
       <div className="reg-title-bar">
-        <div className="reg-title-bar-line"></div>
         <h1 className="reg-title-text">{t.pageTitle}</h1>
+        <div className="reg-title-bar-line"></div>
       </div>
 
       {/* Description */}
