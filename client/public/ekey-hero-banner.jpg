@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>eKey</title>
+<link rel="icon" href="../favicon.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css"
+	href="../../font-awesome/css/font-awesome.css?v=1.1">
+	<link rel="stylesheet" type="text/css"
+		href="../../css/en/bootstrap.min.css?v=1.1">
+		<link rel="stylesheet" type="text/css"
+			href="../../css/en/custom.css?v=1.1">
+			<link rel="stylesheet" type="text/css"
+				href="../../css/en/customHeader.css?v=1.1">
+				<link rel="stylesheet" type="text/css"
+					href="../../fonts/en/font.css?v=1.1">
+</head>
+<body>
+
+	<div class="container-main">
+    <div class="content">
+    <div class="inner-content">
+    
+    <!-- header -->
+   <div class="header">
+ <nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      
+      <a class="navbar-brand" href=".."><img src="../../images/logo.jpg" alt="eKeylogo"></a>
+      
+    </div>
+
+  </div>
+</nav> 
+  <div class="container">
+      <div class="login-heading">Error Page</div>
+    </div>
+    </div>
+</div>
+    
+     
+    
+       <div class="container-main">
+  <div class="content" style="min-height:404px;">
+  <div class="inner-content">
+  <div class="container">
+  <div class="registrationHolder">
+				
+
+				<div style="display: flex; justify-content: center;"><b><br/><br/><br/>Sorry,
+					the page you requested is not found. Please check the URL.</b></div>
+				
+
+			</div>
+  
+  
+  
+
+ 
+<form>
+  
+  <div>
+  
+
+				
+	<div class="container">
+	
+</div>			
+
+  
+  </div>
+ 
+  </form>
+  
+  
+  
+
+  
+  </div>
+  
+  </div>
+  
+  
+  
+  </div>
+  <div class="white-gap-bg"></div>
+  </div>
+		
+<!-- Footer -->
+<div class="clearfix"></div>
+
+
+<div class="footer">
+   
+      
+   
+     
+      <div class="copyright">
+      <div class="container">
+      <div class="pull-left">2021 © Information & eGovernment Authority, Kingdom of Bahrain. All Rights Reserved
+      
+      <p><a href="../Jbc0ZHxbnXmDHvkZQNDXNw/Jbc1a">Privacy Policy</a>    |     <a href="../RJWBG-y-YmI/RJWae">Site Map</a>     |     <a href="../JkOvDfsheW96_Je_BAjGDA/JkOad">Contact Us</a></p>
+      <p>Last updated : 18/May/2021</p>
+      </div>
+      <div class="footer-top">
+      <div class="powered-by">
+      <div class="social-links">
+        <a href="https://www.facebook.com/iGABahrain" aria-label="facebook link" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+        <a href="https://www.twitter.com/iGABahrain" aria-label="twitter link" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+        <a href="https://www.youtube.com/c/iGABahrain" aria-label="youtube link" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+        <a href="https://www.linkedin.com/company/igabahrain" aria-label="linkedin link" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+        <a href="https://www.instagram.com/igabahrain" aria-label="instagram link" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      
+      </div>
+      
+      
+      </div>
+      </div>
+    
+      </div>
+
+    </div>
+    </div>
+
+</body>
+</html>
