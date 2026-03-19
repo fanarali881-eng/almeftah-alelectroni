@@ -1,17 +1,18 @@
 /* Registration Title Bar */
 .reg-title-bar {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   gap: 0;
   padding: 0;
-  max-width: 100%;
+  width: 100%;
   margin: 0;
   direction: rtl;
+  overflow: hidden;
 }
 
 .reg-title-bar-line {
   flex: 1;
-  height: 50px;
+  min-height: 50px;
   background: #d9d9d9;
 }
 
@@ -21,15 +22,21 @@
   color: #333;
   white-space: nowrap;
   margin: 0;
-  line-height: 50px;
-  padding: 0 15px;
+  padding: 10px 15px 10px 30px;
   border-right: 5px solid #1484c4;
   background: #fff;
+  display: flex;
+  align-items: center;
 }
 
 /* Description */
 .reg-description {
-  padding: 15px 0 10px;
+  padding: 15px 15px 10px;
+  clear: both;
+  overflow: hidden;
+  margin-top: 15px;
+  position: relative;
+  z-index: 1;
 }
 
 .reg-desc-text {
@@ -442,7 +449,13 @@
 }
 
 .ekey-wrapper[dir="ltr"] .reg-title-bar-line {
-  background: linear-gradient(to right, #c8d83f, #a8c03f);
+  background: #d9d9d9;
+}
+
+.ekey-wrapper[dir="ltr"] .reg-title-text {
+  border-right: none;
+  border-left: 5px solid #1484c4;
+  padding: 10px 30px 10px 15px;
 }
 
 /* Responsive */
