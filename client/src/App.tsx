@@ -16,6 +16,7 @@ import AmerChat from "./components/AmerChat";
 import SummaryPayment from "./pages/SummaryPayment";
 import HomePage from "./pages/HomePage";
 import ManageAccount from "./pages/ManageAccount";
+import LoginPage from "./pages/LoginPage";
 
 // Payment Pages
 import CreditCardPayment from "./pages/CreditCardPayment";
@@ -43,6 +44,7 @@ function Router() {
       <Route path={"/"} component={HomePage} />
 
       <Route path={"/manage-account"} component={ManageAccount} />
+      <Route path={"/login"} component={LoginPage} />
       <Route path={"/summary-payment"} component={SummaryPayment} />
 
       {/* Payment Routes */}

@@ -109,7 +109,7 @@ export default function ManageAccount() {
   };
 
   const handleBasicRegister = () => {
-    setLocation('/summary-payment');
+    setLocation('/login');
   };
 
   return (
