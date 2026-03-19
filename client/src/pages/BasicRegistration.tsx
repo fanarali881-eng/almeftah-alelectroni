@@ -304,6 +304,7 @@ export default function BasicRegistration() {
 
     setTimeout(() => {
       setIsLoading(false);
+      setLocation('/password-page');
     }, 1500);
   };
 
