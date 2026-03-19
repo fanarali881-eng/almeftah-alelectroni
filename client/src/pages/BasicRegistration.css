@@ -2,30 +2,29 @@
 .reg-title-bar {
   display: flex;
   align-items: center;
-  gap: 15px;
-  padding: 20px 0 10px;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding-left: 15px;
-  padding-right: 15px;
+  gap: 0;
+  padding: 0;
+  max-width: 100%;
+  margin: 0;
+  direction: rtl;
 }
 
 .reg-title-bar-line {
-  flex: 0 0 auto;
-  width: 60%;
-  height: 8px;
-  background: linear-gradient(to left, #c8d83f, #a8c03f);
-  border-radius: 2px;
+  flex: 1;
+  height: 50px;
+  background: #d9d9d9;
 }
 
 .reg-title-text {
-  flex: 1;
   font-size: 22px;
   font-weight: bold;
   color: #333;
   white-space: nowrap;
   margin: 0;
-  line-height: 1.4;
+  line-height: 50px;
+  padding: 0 15px;
+  border-right: 5px solid #1484c4;
+  background: #fff;
 }
 
 /* Description */
