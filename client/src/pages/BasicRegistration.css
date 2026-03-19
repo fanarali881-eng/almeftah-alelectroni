@@ -57,7 +57,7 @@
   border-radius: 30px;
   overflow: hidden;
   background: #fff;
-  max-width: 700px;
+  max-width: 100%;
   margin: 0 auto;
 }
 
@@ -75,17 +75,17 @@
 }
 
 .reg-step-active {
-  color: #004f98;
+  color: #1484c4;
   font-weight: bold;
 }
 
 .reg-step-active .reg-step-text {
-  color: #004f98;
+  color: #1484c4;
 }
 
 .reg-step-arrow {
   font-size: 16px;
-  color: #3bb4c1;
+  color: #1484c4;
   font-weight: bold;
 }
 
@@ -148,7 +148,7 @@
 }
 
 .reg-field input:focus {
-  border-color: #3bb4c1;
+  border-color: #1484c4;
 }
 
 /* Date Group */
@@ -173,7 +173,7 @@
 }
 
 .reg-date-select:focus {
-  border-color: #3bb4c1;
+  border-color: #1484c4;
 }
 
 .reg-date-year {
@@ -189,7 +189,7 @@
 }
 
 .reg-date-year:focus {
-  border-color: #3bb4c1;
+  border-color: #1484c4;
 }
 
 /* Phone Group */
@@ -221,7 +221,7 @@
 }
 
 .reg-phone-code-input:focus {
-  border-color: #3bb4c1;
+  border-color: #1484c4;
 }
 
 .reg-phone-country {
@@ -252,7 +252,7 @@
 }
 
 .reg-phone-country-select:focus {
-  border-color: #3bb4c1;
+  border-color: #1484c4;
 }
 
 /* reCAPTCHA */
@@ -336,7 +336,7 @@
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  background: #3bb4c1;
+  background: #1484c4;
   color: #fff;
   font-size: 14px;
   font-weight: bold;
@@ -366,13 +366,13 @@
 }
 
 .reg-terms-link {
-  color: #004f98;
+  color: #1484c4;
   text-decoration: underline;
   font-weight: bold;
 }
 
 .reg-terms-link:hover {
-  color: #003570;
+  color: #1060a0;
 }
 
 /* Buttons */
@@ -400,7 +400,7 @@
 }
 
 .reg-btn-continue {
-  background: linear-gradient(135deg, #3bb4c1, #2a8f9e);
+  background: #1484c4;
   color: #fff;
 }
 
@@ -414,7 +414,7 @@
 }
 
 .reg-btn-cancel {
-  background: linear-gradient(135deg, #3bb4c1, #2a8f9e);
+  background: #1484c4;
   color: #fff;
 }
 
