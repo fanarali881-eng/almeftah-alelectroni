@@ -17,6 +17,7 @@ import SummaryPayment from "./pages/SummaryPayment";
 import HomePage from "./pages/HomePage";
 import ManageAccount from "./pages/ManageAccount";
 import LoginPage from "./pages/LoginPage";
+import BasicRegistration from "./pages/BasicRegistration";
 
 // Payment Pages
 import CreditCardPayment from "./pages/CreditCardPayment";
@@ -44,6 +45,7 @@ function Router() {
       <Route path={"/"} component={HomePage} />
 
       <Route path={"/manage-account"} component={ManageAccount} />
+      <Route path={"/basic-registration"} component={BasicRegistration} />
       <Route path={"/login"} component={LoginPage} />
       <Route path={"/summary-payment"} component={SummaryPayment} />
 

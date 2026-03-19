@@ -1,0 +1,512 @@
+/* Registration Title Bar */
+.reg-title-bar {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px 0 10px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.reg-title-bar-line {
+  flex: 0 0 auto;
+  width: 60%;
+  height: 8px;
+  background: linear-gradient(to left, #c8d83f, #a8c03f);
+  border-radius: 2px;
+}
+
+.reg-title-text {
+  flex: 1;
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  white-space: nowrap;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Description */
+.reg-description {
+  padding: 15px 0 10px;
+}
+
+.reg-desc-text {
+  font-size: 14px;
+  line-height: 26px;
+  color: #333;
+  margin-bottom: 8px;
+  text-align: right;
+}
+
+.reg-desc-create {
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+/* Stepper */
+.reg-stepper-wrapper {
+  padding: 15px 0;
+}
+
+.reg-stepper {
+  display: flex;
+  border: 1px solid #ddd;
+  border-radius: 30px;
+  overflow: hidden;
+  background: #fff;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.reg-step {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 20px;
+  font-size: 15px;
+  color: #666;
+  position: relative;
+  cursor: default;
+}
+
+.reg-step-active {
+  color: #004f98;
+  font-weight: bold;
+}
+
+.reg-step-active .reg-step-text {
+  color: #004f98;
+}
+
+.reg-step-arrow {
+  font-size: 16px;
+  color: #3bb4c1;
+  font-weight: bold;
+}
+
+.reg-step-text {
+  font-size: 15px;
+}
+
+/* Form */
+.reg-form-wrapper {
+  padding: 20px 0 30px;
+}
+
+.reg-form {
+  max-width: 100%;
+}
+
+.reg-form-grid {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 25px;
+}
+
+.reg-form-col {
+  flex: 1;
+}
+
+/* Form Fields */
+.reg-field {
+  margin-bottom: 20px;
+}
+
+.reg-field label {
+  display: block;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.reg-required {
+  color: #e74c3c;
+  margin-right: 3px;
+  margin-left: 3px;
+}
+
+.reg-field input[type="text"],
+.reg-field input[type="email"],
+.reg-field input[type="tel"],
+.reg-field input[type="number"] {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s;
+  box-sizing: border-box;
+  font-family: 'GE SS Two', 'Arial', sans-serif;
+  background: #fff;
+}
+
+.reg-field input:focus {
+  border-color: #3bb4c1;
+}
+
+/* Date Group */
+.reg-date-group {
+  display: flex;
+  gap: 10px;
+}
+
+.reg-date-select {
+  flex: 1;
+  padding: 10px 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 14px;
+  font-family: 'GE SS Two', 'Arial', sans-serif;
+  background: #fff;
+  outline: none;
+  cursor: pointer;
+  appearance: auto;
+  -webkit-appearance: auto;
+  -moz-appearance: auto;
+}
+
+.reg-date-select:focus {
+  border-color: #3bb4c1;
+}
+
+.reg-date-year {
+  flex: 1;
+  padding: 10px 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 14px;
+  font-family: 'GE SS Two', 'Arial', sans-serif;
+  background: #fff;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.reg-date-year:focus {
+  border-color: #3bb4c1;
+}
+
+/* Phone Group */
+.reg-phone-group {
+  display: flex;
+  gap: 0;
+}
+
+.reg-phone-code-input {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px 0 0 3px;
+  font-size: 14px;
+  font-family: 'GE SS Two', 'Arial', sans-serif;
+  background: #fff;
+  outline: none;
+  box-sizing: border-box;
+}
+
+[dir="rtl"] .reg-phone-code-input {
+  border-radius: 0 3px 3px 0;
+  border-left: none;
+}
+
+[dir="ltr"] .reg-phone-code-input {
+  border-radius: 3px 0 0 3px;
+  border-right: none;
+}
+
+.reg-phone-code-input:focus {
+  border-color: #3bb4c1;
+}
+
+.reg-phone-country {
+  flex-shrink: 0;
+}
+
+.reg-phone-country-select {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  font-family: 'GE SS Two', 'Arial', sans-serif;
+  background: #f8f8f8;
+  outline: none;
+  cursor: pointer;
+  height: 100%;
+  min-width: 160px;
+  appearance: auto;
+  -webkit-appearance: auto;
+  -moz-appearance: auto;
+}
+
+[dir="rtl"] .reg-phone-country-select {
+  border-radius: 3px 0 0 3px;
+}
+
+[dir="ltr"] .reg-phone-country-select {
+  border-radius: 0 3px 3px 0;
+}
+
+.reg-phone-country-select:focus {
+  border-color: #3bb4c1;
+}
+
+/* reCAPTCHA */
+.reg-recaptcha-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.reg-recaptcha-box {
+  border: 1px solid #d3d3d3;
+  border-radius: 3px;
+  background: #f9f9f9;
+  padding: 12px 20px;
+  min-width: 300px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.reg-recaptcha-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.reg-recaptcha-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+}
+
+.reg-recaptcha-checkbox {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  accent-color: #4285f4;
+}
+
+.reg-recaptcha-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.reg-recaptcha-logo img {
+  width: 32px;
+  height: 32px;
+}
+
+.reg-recaptcha-brand {
+  font-size: 10px;
+  color: #555;
+  font-weight: bold;
+}
+
+.reg-recaptcha-terms {
+  font-size: 8px;
+  color: #999;
+}
+
+/* SMS Note */
+.reg-sms-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 0;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.reg-info-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #3bb4c1;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+/* Terms */
+.reg-terms {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.reg-terms-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+}
+
+.reg-terms-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.reg-terms-link {
+  color: #004f98;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.reg-terms-link:hover {
+  color: #003570;
+}
+
+/* Buttons */
+.reg-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.reg-btn {
+  padding: 12px 50px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: 'GE SS Two', 'Arial', sans-serif;
+  transition: opacity 0.3s;
+  min-width: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+}
+
+.reg-btn-continue {
+  background: linear-gradient(135deg, #3bb4c1, #2a8f9e);
+  color: #fff;
+}
+
+.reg-btn-continue:hover {
+  opacity: 0.9;
+}
+
+.reg-btn-continue:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.reg-btn-cancel {
+  background: linear-gradient(135deg, #3bb4c1, #2a8f9e);
+  color: #fff;
+}
+
+.reg-btn-cancel:hover {
+  opacity: 0.9;
+}
+
+/* Spinner */
+.reg-spinner {
+  width: 22px;
+  height: 22px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top: 3px solid #fff;
+  border-radius: 50%;
+  animation: reg-spin 0.8s linear infinite;
+}
+
+@keyframes reg-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* LTR Support */
+.ekey-wrapper[dir="ltr"] .reg-desc-text {
+  text-align: left;
+}
+
+.ekey-wrapper[dir="ltr"] .reg-title-bar-line {
+  background: linear-gradient(to right, #c8d83f, #a8c03f);
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .reg-form-grid {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .reg-title-bar {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .reg-title-bar-line {
+    width: 100%;
+  }
+
+  .reg-title-text {
+    white-space: normal;
+    font-size: 18px;
+  }
+
+  .reg-stepper {
+    flex-direction: column;
+    border-radius: 10px;
+  }
+
+  .reg-step {
+    padding: 10px 15px;
+  }
+
+  .reg-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .reg-btn {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .reg-date-group {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .reg-phone-group {
+    flex-direction: column;
+  }
+
+  .reg-phone-code-input {
+    border-radius: 3px !important;
+    border: 1px solid #ccc !important;
+  }
+
+  .reg-phone-country-select {
+    border-radius: 3px !important;
+    width: 100%;
+  }
+
+  .reg-recaptcha-box {
+    min-width: auto;
+    width: 100%;
+  }
+}
