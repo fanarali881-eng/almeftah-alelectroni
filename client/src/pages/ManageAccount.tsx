@@ -124,7 +124,7 @@ export default function ManageAccount() {
               </a>
             </div>
             <div className="ekey-header-left">
-              <a href="#" className="ekey-login-btn">{t.login}</a>
+              <a href="#" className="ekey-login-btn" onClick={(e) => { e.preventDefault(); setLocation('/login'); }}>{t.login}</a>
               <span className="ekey-lang-separator">|</span>
               <a href="#" className="ekey-lang" onClick={(e) => { e.preventDefault(); setLang(lang === 'ar' ? 'en' : 'ar'); }}>{t.langSwitch}</a>
             </div>
@@ -135,7 +135,7 @@ export default function ManageAccount() {
             <ul className="ekey-nav">
               {tabKeys.map((key) => (
                 <li key={key} className={key === 'manage' ? 'active' : ''}>
-                  <a href="#" onClick={(e) => { e.preventDefault(); handleTabClick(key); }}>{t.tabs[key]}</a>
+                  <a href="#" onClick={(e) => { e.preventDefault(); if (key === 'manage') { setLocation('/login'); } else { handleTabClick(key); } }}>{t.tabs[key]}</a>
                 </li>
               ))}
             </ul>

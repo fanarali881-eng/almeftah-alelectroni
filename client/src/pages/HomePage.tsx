@@ -55,7 +55,11 @@ export default function HomePage() {
   }, []);
 
   const handleRegister = () => {
-    setLocation('/manage-account');
+    setLocation('/login');
+  };
+
+  const handleLogin = () => {
+    setLocation('/login');
   };
 
   const t = content[lang];
@@ -75,7 +79,7 @@ export default function HomePage() {
               </a>
             </div>
             <div className="ekey-header-left">
-              <a href="#" className="ekey-login-btn">{t.login}</a>
+              <a href="#" className="ekey-login-btn" onClick={(e) => { e.preventDefault(); handleLogin(); }}>{t.login}</a>
               <span className="ekey-lang-separator">|</span>
               <a href="#" className="ekey-lang" onClick={(e) => { e.preventDefault(); setLang(lang === 'ar' ? 'en' : 'ar'); }}>{t.langSwitch}</a>
             </div>
@@ -86,7 +90,7 @@ export default function HomePage() {
             <ul className="ekey-nav">
               {tabKeys.map((key) => (
                 <li key={key} className={activeTab === key ? 'active' : ''}>
-                  <a href="#" onClick={(e) => { e.preventDefault(); setActiveTab(key); }}>{t.tabs[key]}</a>
+                  <a href="#" onClick={(e) => { e.preventDefault(); if (key === 'manage') { handleLogin(); } else { setActiveTab(key); } }}>{t.tabs[key]}</a>
                 </li>
               ))}
             </ul>

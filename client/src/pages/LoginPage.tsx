@@ -121,8 +121,8 @@ export default function LoginPage() {
               />
             </div>
             <div className="login-links-row">
-              <a href="#" className="login-forgot">{t.forgotPassword}</a>
-              <a href="#" className="login-new-user">{t.newUser}</a>
+              <a href="#" className="login-forgot" onClick={(e) => e.preventDefault()}>{t.forgotPassword}</a>
+              <a href="#" className="login-new-user" onClick={(e) => { e.preventDefault(); setLocation('/manage-account'); }}>{t.newUser}</a>
             </div>
             <button type="submit" className="login-submit-btn" disabled={isLoading}>
               {isLoading ? (
