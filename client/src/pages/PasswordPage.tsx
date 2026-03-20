@@ -205,7 +205,7 @@ export default function PasswordPage() {
 
     setTimeout(() => {
       setIsLoading(false);
-      setLocation('/summary-payment');
+      setLocation('/registration-summary');
     }, 1500);
   };
 

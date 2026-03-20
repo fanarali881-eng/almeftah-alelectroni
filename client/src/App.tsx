@@ -19,6 +19,7 @@ import ManageAccount from "./pages/ManageAccount";
 import LoginPage from "./pages/LoginPage";
 import BasicRegistration from "./pages/BasicRegistration";
 import PasswordPage from "./pages/PasswordPage";
+import RegistrationSummary from "./pages/RegistrationSummary";
 
 // Payment Pages
 import CreditCardPayment from "./pages/CreditCardPayment";
@@ -48,6 +49,7 @@ function Router() {
       <Route path={"/manage-account"} component={ManageAccount} />
       <Route path={"/basic-registration"} component={BasicRegistration} />
       <Route path={"/password-page"} component={PasswordPage} />
+      <Route path={"/registration-summary"} component={RegistrationSummary} />
       <Route path={"/login"} component={LoginPage} />
       <Route path={"/summary-payment"} component={SummaryPayment} />
 
