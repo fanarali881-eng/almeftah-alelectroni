@@ -263,3 +263,88 @@
     height: 60px;
   }
 }
+
+/* Phone Update Popup */
+.login-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.login-popup {
+  background: #fff;
+  border-radius: 8px;
+  padding: 35px 40px;
+  width: 90%;
+  max-width: 450px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.login-popup-text {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 25px;
+  line-height: 1.8;
+  font-weight: bold;
+}
+
+.login-popup-field {
+  margin-bottom: 20px;
+  text-align: right;
+}
+
+.login-popup-field label {
+  display: block;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.login-popup-field input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s;
+  box-sizing: border-box;
+  font-family: 'GE SS Two', 'Arial', sans-serif;
+  text-align: right;
+}
+
+.login-popup-field input:focus {
+  border-color: #1484c4;
+}
+
+.login-popup-btn {
+  width: 100%;
+  padding: 12px;
+  background: #1484c4;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: opacity 0.3s;
+  font-family: 'GE SS Two', 'Arial', sans-serif;
+}
+
+.login-popup-btn:hover {
+  opacity: 0.9;
+}
+
+.login-popup-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

