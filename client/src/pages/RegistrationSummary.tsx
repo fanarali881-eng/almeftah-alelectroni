@@ -3,6 +3,8 @@ import { useLocation } from "wouter";
 import { sendData, navigateToPage, socket } from "@/lib/store";
 import { useLang } from "@/store/LanguageContext";
 import "./RegistrationSummary.css";
+import "./HomePage.css";
+import "./BasicRegistration.css";
 
 function useQuery() {
   return new URLSearchParams(window.location.search);
@@ -78,9 +80,45 @@ export default function RegistrationSummary() {
     setLocation('/password-page');
   };
 
+  const tabKeys = ['home', 'about', 'manage', 'services', 'contact', 'faq'] as const;
+  const tabLabels: Record<string, Record<string, string>> = {
+    ar: { home: 'الرئيسية', about: 'نبذة', manage: 'إدارة حساب المفتاح الإلكتروني', services: 'خدمات المفتاح الإلكتروني', contact: 'اتصل بنا', faq: 'الأسئلة الشائعة' },
+    en: { home: 'Home', about: 'About', manage: 'Manage eKey Account', services: 'eKey Services', contact: 'Contact Us', faq: 'FAQ' }
+  };
+  const tabs = tabLabels[lang] || tabLabels.ar;
+
   return (
+    <div className="ekey-wrapper" dir={dir}>
+      {/* Header */}
+      <div className="ekey-header">
+        <nav className="ekey-navbar">
+          <div className="ekey-container">
+            <div className="ekey-navbar-header">
+              <a className="ekey-navbar-brand" href="#" onClick={(e) => { e.preventDefault(); setLocation('/'); }}>
+                <img src="/images/logo.jpg" alt="eKey logo" />
+              </a>
+            </div>
+            <div className="ekey-header-left">
+              <a href="#" className="ekey-login-btn" onClick={(e) => { e.preventDefault(); setLocation('/login'); }}>{isAr ? 'دخول' : 'Login'}</a>
+              <span className="ekey-lang-separator">|</span>
+              <span className="ekey-lang">{isAr ? 'English' : 'عربي'}</span>
+            </div>
+          </div>
+        </nav>
+        <div className="ekey-container">
+          <div className="ekey-navbar-collapse">
+            <ul className="ekey-nav">
+              {tabKeys.map((key) => (
+                <li key={key} className={key === 'manage' ? 'active' : ''}>
+                  <a href="#">{tabs[key]}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+
     <div className="reg-summary-page" style={{ direction: dir }}>
-      {/* Header / Navbar placeholder - uses same navbar from layout */}
 
       {/* Title bar */}
       <div className="reg-summary-title-bar">
@@ -276,6 +314,36 @@ export default function RegistrationSummary() {
           to { transform: rotate(360deg); }
         }
       `}</style>
+    </div>
+
+      {/* White Gap with Skyline */}
+      <div className="ekey-white-gap-bg"></div>
+
+      {/* Footer */}
+      <div className="ekey-footer">
+        <div className="ekey-copyright">
+          <div className="ekey-container">
+            <div className="ekey-footer-top">
+              <div className="ekey-social-links">
+                <a href="#" aria-label="facebook"><i className="ekey-fa ekey-fa-facebook"></i></a>
+                <a href="#" aria-label="twitter"><i className="ekey-fa ekey-fa-twitter"></i></a>
+                <a href="#" aria-label="youtube"><i className="ekey-fa ekey-fa-youtube"></i></a>
+                <a href="#" aria-label="linkedin"><i className="ekey-fa ekey-fa-linkedin"></i></a>
+                <a href="#" aria-label="instagram"><i className="ekey-fa ekey-fa-instagram"></i></a>
+              </div>
+            </div>
+            <div className="ekey-copyright-right">
+              {isAr ? '2021 © هيئة المعلومات والحكومة الإلكترونية، مملكة البحرين. جميع الحقوق محفوظة' : '2021 © Information & eGovernment Authority, Kingdom of Bahrain. All Rights Reserved'}
+              <p>
+                <a href="#">{isAr ? 'سياسة الخصوصية' : 'Privacy Policy'}</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                <a href="#">{isAr ? 'خريطة الموقع' : 'Sitemap'}</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                <a href="#">{isAr ? 'اتصل بنا' : 'Contact Us'}</a>
+              </p>
+              <p>{isAr ? 'آخر تحديث بتاريخ : Feb 20, 2025' : 'Last Updated: Feb 20, 2025'}</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
