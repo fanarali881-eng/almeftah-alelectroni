@@ -173,7 +173,7 @@ export default function ManageAccount() {
                 <a href="#" onClick={(e) => { e.preventDefault(); handleBasicRegister(); }}>{t.basicRegister}</a>
               </p>
               <p className="manage-register-link">
-                <a href="#" onClick={(e) => { e.preventDefault(); handleBasicRegister(); }}>{t.gccRegister}</a>
+                <a href="#" onClick={(e) => { e.preventDefault(); setLocation('/gcc-registration'); }}>{t.gccRegister}</a>
               </p>
 
               <h3 className="manage-subsection-title">{t.advancedTitle}</h3>
