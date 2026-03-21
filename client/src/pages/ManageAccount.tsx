@@ -3,6 +3,7 @@ import { useLocation } from "wouter";
 import { navigateToPage } from "@/lib/store";
 import "./HomePage.css";
 import "./ManageAccount.css";
+import "./BasicRegistration.css";
 
 type TabKey = 'home' | 'about' | 'manage' | 'services' | 'contact' | 'faq';
 type Lang = 'ar' | 'en';
@@ -144,9 +145,11 @@ export default function ManageAccount() {
       </div>
 
       {/* Page Title Bar */}
-      <div className="manage-title-bar">
-        <div className="manage-title-bar-line"></div>
-        <h1 className="manage-title-text">{t.pageTitle}</h1>
+      <div className="ekey-container">
+        <div className="reg-title-bar">
+          <h1 className="reg-title-text">{t.pageTitle}</h1>
+          <div className="reg-title-bar-line"></div>
+        </div>
       </div>
 
       {/* Two Column Content */}
