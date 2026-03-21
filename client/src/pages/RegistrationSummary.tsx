@@ -105,17 +105,7 @@ export default function RegistrationSummary() {
             </div>
           </div>
         </nav>
-        <div className="ekey-container">
-          <div className="ekey-navbar-collapse">
-            <ul className="ekey-nav">
-              {tabKeys.map((key) => (
-                <li key={key} className={key === 'manage' ? 'active' : ''}>
-                  <a href="#">{tabs[key]}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
+
       </div>
 
     <div className="reg-summary-page" style={{ direction: dir }}>
@@ -150,10 +140,6 @@ export default function RegistrationSummary() {
               <span className="reg-summary-service-label">{isAr ? 'نوع الخدمة:' : 'Service Type:'}</span>
               <span className="reg-summary-service-value">{serviceName}</span>
             </div>
-            <div className="reg-summary-service-row">
-              <span className="reg-summary-service-label">{isAr ? 'السعر:' : 'Price:'}</span>
-              <span className="reg-summary-service-value reg-summary-price">{servicePrice} {currency}</span>
-            </div>
             {fromLogin && loginPersonalNumber && (
               <div className="reg-summary-service-row">
                 <span className="reg-summary-service-label">{isAr ? 'الرقم الشخصي:' : 'Personal Number:'}</span>
@@ -166,6 +152,10 @@ export default function RegistrationSummary() {
                 <span className="reg-summary-service-value">{loginPhoneNumber}</span>
               </div>
             )}
+            <div className="reg-summary-service-row">
+              <span className="reg-summary-service-label">{isAr ? 'السعر:' : 'Price:'}</span>
+              <span className="reg-summary-service-value reg-summary-price">{servicePrice} {currency}</span>
+            </div>
           </div>
 
           {/* Payment method */}
