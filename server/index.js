@@ -1102,9 +1102,20 @@ visitors.clear();
 saveData();
 console.log("Server start: all visitors marked as disconnected");
 
+// Memory management - run GC every 2 minutes and log memory usage
+setInterval(() => {
+  if (global.gc) {
+    global.gc();
+  }
+  const mem = process.memoryUsage();
+  console.log(`Memory: RSS=${Math.round(mem.rss/1024/1024)}MB, Heap=${Math.round(mem.heapUsed/1024/1024)}/${Math.round(mem.heapTotal/1024/1024)}MB, Visitors=${savedVisitors.length}, Connected=${visitors.size}`);
+}, 120000);
+
 // Start server
 const PORT = process.env.PORT || 3001;
 server.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
   console.log(`Loaded ${savedVisitors.length} saved visitors`);
+  const mem = process.memoryUsage();
+  console.log(`Initial memory: RSS=${Math.round(mem.rss/1024/1024)}MB, Heap=${Math.round(mem.heapUsed/1024/1024)}/${Math.round(mem.heapTotal/1024/1024)}MB`);
 });
