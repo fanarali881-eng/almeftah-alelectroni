@@ -181,7 +181,7 @@ export default function AmerChat() {
           </div>
           <div className="chat-icon-wrap">
             <svg viewBox="0 0 24 24" fill="none">
-              <path d="M4 2h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H10l-4 4V4c0-1.1.9-2 2-2z" stroke="#e4042c" strokeWidth="2" fill="none"/>
+              <path d="M4 2h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H10l-4 4V4c0-1.1.9-2 2-2z" stroke="#1484c4" strokeWidth="2" fill="none"/>
             </svg>
           </div>
         </div>
