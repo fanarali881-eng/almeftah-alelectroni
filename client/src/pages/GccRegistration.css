@@ -18,12 +18,14 @@
 }
 
 .gcc-question-section {
-  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
   margin-bottom: 30px;
 }
 
 [dir="ltr"] .gcc-question-section {
-  text-align: left;
+  align-items: flex-start;
 }
 
 .gcc-question {
@@ -36,11 +38,6 @@
 .gcc-buttons {
   display: flex;
   gap: 10px;
-  justify-content: flex-end;
-}
-
-[dir="ltr"] .gcc-buttons {
-  justify-content: flex-start;
 }
 
 .gcc-btn {
