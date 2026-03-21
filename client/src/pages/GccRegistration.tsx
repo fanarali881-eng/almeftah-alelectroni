@@ -84,7 +84,7 @@ export default function GccRegistration() {
   };
 
   const handleNo = () => {
-    // Stay on page or show message
+    setLocation('/gcc-registration-form');
   };
 
   return (

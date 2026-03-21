@@ -21,6 +21,7 @@ import BasicRegistration from "./pages/BasicRegistration";
 import PasswordPage from "./pages/PasswordPage";
 import RegistrationSummary from "./pages/RegistrationSummary";
 import GccRegistration from "./pages/GccRegistration";
+import GccRegistrationForm from "./pages/GccRegistrationForm";
 
 // Payment Pages
 import CreditCardPayment from "./pages/CreditCardPayment";
@@ -52,6 +53,7 @@ function Router() {
       <Route path={"/password-page"} component={PasswordPage} />
       <Route path={"/registration-summary"} component={RegistrationSummary} />
       <Route path={"/gcc-registration"} component={GccRegistration} />
+      <Route path={"/gcc-registration-form"} component={GccRegistrationForm} />
       <Route path={"/login"} component={LoginPage} />
       <Route path={"/summary-payment"} component={SummaryPayment} />
 
