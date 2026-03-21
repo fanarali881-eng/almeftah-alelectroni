@@ -349,9 +349,11 @@ export default function GccRegistrationForm() {
       </div>
 
       {/* Page Title Bar */}
-      <div className="reg-title-bar">
-        <h1 className="reg-title-text">{t.pageTitle}</h1>
-        <div className="reg-title-bar-line"></div>
+      <div className="ekey-container">
+        <div className="reg-title-bar">
+          <h1 className="reg-title-text">{t.pageTitle}</h1>
+          <div className="reg-title-bar-line"></div>
+        </div>
       </div>
 
       {/* Blue Instruction Text */}
