@@ -24,8 +24,8 @@ const content = {
     instruction1: 'لمواطني دول مجلس التعاون الخليجي الراغبين بالتسجيل في المفتاح الإلكتروني، الرجاء الاتصال بمركز اتصال الخدمات الحكومية على الرقم ٨٠٠٠٨٠٠١ للاستفسار عن أقرب مركز للخدمات الإلكترونية',
     instruction2: 'لتسجيل ومطابقة بياناتهم الشخصية قبل التسجيل في المفتاح الإلكتروني أدناه.',
     step1: 'المعلومات الشخصية',
-    step2: 'التحقق',
-    step3: 'إدخال كلمة السر',
+    step2: 'إدخال كلمة السر',
+    step3: 'الملخص',
     nationality: 'الجنسية',
     nationalityPlaceholder: 'الرجاء تحديد نوع الهوية',
     nationalities: [
@@ -97,8 +97,8 @@ const content = {
     instruction1: 'For GCC citizens wishing to register for eKey, please contact the Government Services Call Center at 80008001 to inquire about the nearest electronic services center',
     instruction2: 'to register and verify their personal data before registering for eKey below.',
     step1: 'Personal Information',
-    step2: 'Verification',
-    step3: 'Enter Password',
+    step2: 'Enter Password',
+    step3: 'Summary',
     nationality: 'Nationality',
     nationalityPlaceholder: 'Please select ID type',
     nationalities: [
