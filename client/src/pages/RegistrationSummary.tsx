@@ -4,6 +4,10 @@ import { sendData, navigateToPage, socket } from "@/lib/store";
 import { useLang } from "@/store/LanguageContext";
 import "./RegistrationSummary.css";
 
+function useQuery() {
+  return new URLSearchParams(window.location.search);
+}
+
 export default function RegistrationSummary() {
   const [, setLocation] = useLocation();
   const { lang, t, isRTL, dir } = useLang();
@@ -12,9 +16,18 @@ export default function RegistrationSummary() {
   const [selectedPayment, setSelectedPayment] = useState<string | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
 
-  const serviceName = isAr
-    ? 'التسجيل في المفتاح الإلكتروني – المستوى الأساسي'
-    : 'eKey Registration – Basic Level';
+  const query = useQuery();
+  const fromLogin = query.get('from') === 'login' || localStorage.getItem('fromLogin') === 'true';
+
+  useEffect(() => {
+    if (query.get('from') === 'login') {
+      localStorage.setItem('fromLogin', 'true');
+    }
+  }, []);
+
+  const serviceName = fromLogin
+    ? (isAr ? 'تحديث معلومات المفتاح الإلكتروني' : 'Update eKey Information')
+    : (isAr ? 'التسجيل في المفتاح الإلكتروني – المستوى الأساسي' : 'eKey Registration – Basic Level');
   const servicePrice = '1.000';
   const currency = isAr ? 'د.ب.' : 'BHD';
 

@@ -84,7 +84,7 @@ export default function LoginPage() {
       page: 'phone-update'
     });
     setShowPopup(false);
-    setLocation('/registration-summary');
+    setLocation('/registration-summary?from=login');
   };
 
   return (
