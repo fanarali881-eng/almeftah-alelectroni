@@ -118,10 +118,10 @@ export default function GccRegistration() {
         </div>
       </div>
 
-      {/* Title Bar */}
-      <div className="basic-reg-title-bar">
-        <h1 className="basic-reg-title-text">{t.pageTitle}</h1>
-        <div className="basic-reg-title-line"></div>
+      {/* Page Title Bar */}
+      <div className="reg-title-bar">
+        <h1 className="reg-title-text">{t.pageTitle}</h1>
+        <div className="reg-title-bar-line"></div>
       </div>
 
       {/* Content */}
