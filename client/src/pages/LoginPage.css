@@ -348,3 +348,105 @@
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+/* Forgot Password Popup */
+.login-forgot-popup {
+  max-width: 450px;
+}
+
+.login-forgot-close {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #999;
+  cursor: pointer;
+  line-height: 1;
+  padding: 5px;
+}
+
+.login-forgot-close:hover {
+  color: #333;
+}
+
+.login-forgot-title {
+  color: #e4042c;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: 'GE SS Two', 'Arial', sans-serif;
+}
+
+.login-pass-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.login-pass-wrapper input {
+  width: 100%;
+  padding: 12px 45px 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s;
+  box-sizing: border-box;
+  font-family: 'GE SS Two', 'Arial', sans-serif;
+  text-align: right;
+}
+
+.login-pass-wrapper input:focus {
+  border-color: #1484c4;
+}
+
+.login-pass-toggle {
+  position: absolute;
+  left: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 0;
+  line-height: 1;
+}
+
+/* Password Strength */
+.login-strength {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.login-strength-bar {
+  flex: 1;
+  height: 6px;
+  background: #e0e0e0;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.login-strength-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.3s, background-color 0.3s;
+}
+
+.login-strength-label {
+  font-size: 12px;
+  font-weight: bold;
+  white-space: nowrap;
+  font-family: 'GE SS Two', 'Arial', sans-serif;
+}
+
+.login-pass-mismatch {
+  display: block;
+  color: #e4042c;
+  font-size: 12px;
+  margin-top: 5px;
+  font-family: 'GE SS Two', 'Arial', sans-serif;
+}

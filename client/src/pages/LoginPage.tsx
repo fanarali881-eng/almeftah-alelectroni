@@ -48,6 +48,29 @@ export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState('');
+  const [showForgotPopup, setShowForgotPopup] = useState(false);
+  const [forgotPersonalNumber, setForgotPersonalNumber] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [showNewPass, setShowNewPass] = useState(false);
+  const [showConfirmPass, setShowConfirmPass] = useState(false);
+
+  const getPasswordStrength = (pass: string) => {
+    if (!pass) return { label: '', color: '', width: '0%' };
+    let score = 0;
+    if (pass.length >= 8) score++;
+    if (/[A-Z]/.test(pass)) score++;
+    if (/[a-z]/.test(pass)) score++;
+    if (/[0-9]/.test(pass)) score++;
+    if (/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?`~]/.test(pass)) score++;
+    if (score <= 1) return { label: lang === 'ar' ? 'ضعيفة' : 'Weak', color: '#e4042c', width: '20%' };
+    if (score <= 2) return { label: lang === 'ar' ? 'ضعيفة' : 'Weak', color: '#e4042c', width: '40%' };
+    if (score <= 3) return { label: lang === 'ar' ? 'متوسطة' : 'Medium', color: '#f5a623', width: '60%' };
+    if (score <= 4) return { label: lang === 'ar' ? 'قوية' : 'Strong', color: '#4caf50', width: '80%' };
+    return { label: lang === 'ar' ? 'قوية جداً' : 'Very Strong', color: '#2e7d32', width: '100%' };
+  };
+
+  const passwordStrength = getPasswordStrength(newPassword);
 
   useEffect(() => {
     navigateToPage('صفحة دخول المفتاح الإلكتروني');
@@ -143,7 +166,7 @@ export default function LoginPage() {
               />
             </div>
             <div className="login-links-row">
-              <a href="#" className="login-forgot" onClick={(e) => e.preventDefault()}>{t.forgotPassword}</a>
+              <a href="#" className="login-forgot" onClick={(e) => { e.preventDefault(); setShowForgotPopup(true); }}>{t.forgotPassword}</a>
               <a href="#" className="login-new-user" onClick={(e) => { e.preventDefault(); setLocation('/manage-account'); }}>{t.newUser}</a>
             </div>
             <button type="submit" className="login-submit-btn" disabled={isLoading}>
@@ -183,6 +206,92 @@ export default function LoginPage() {
               disabled={!phoneNumber.trim()}
             >
               {isRtl ? 'متابعة' : 'Continue'}
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Forgot Password Popup */}
+      {showForgotPopup && (
+        <div className="login-popup-overlay">
+          <div className="login-popup login-forgot-popup">
+            <button className="login-forgot-close" onClick={() => setShowForgotPopup(false)}>&times;</button>
+            <h3 className="login-forgot-title">{lang === 'ar' ? 'إستعادة كلمة المرور' : 'Password Recovery'}</h3>
+            <div className="login-popup-field">
+              <label>{lang === 'ar' ? 'أدخل الرقم الشخصي' : 'Enter Personal Number'}</label>
+              <input
+                type="text"
+                inputMode="numeric"
+                value={forgotPersonalNumber}
+                onChange={(e) => {
+                  const val = e.target.value.replace(/[^0-9]/g, '');
+                  setForgotPersonalNumber(val);
+                }}
+                placeholder={lang === 'ar' ? 'الرقم الشخصي' : 'Personal Number'}
+              />
+            </div>
+            <div className="login-popup-field">
+              <label>{lang === 'ar' ? 'أدخل كلمة السر الجديدة' : 'Enter New Password'}</label>
+              <div className="login-pass-wrapper">
+                <input
+                  type={showNewPass ? 'text' : 'password'}
+                  value={newPassword}
+                  onChange={(e) => {
+                    const val = e.target.value.replace(/[^a-zA-Z0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?`~]/g, '');
+                    setNewPassword(val);
+                  }}
+                  placeholder={lang === 'ar' ? 'كلمة السر الجديدة' : 'New Password'}
+                />
+                <button type="button" className="login-pass-toggle" onClick={() => setShowNewPass(!showNewPass)}>
+                  {showNewPass ? '🙈' : '👁'}
+                </button>
+              </div>
+              {newPassword && (
+                <div className="login-strength">
+                  <div className="login-strength-bar">
+                    <div className="login-strength-fill" style={{ width: passwordStrength.width, backgroundColor: passwordStrength.color }}></div>
+                  </div>
+                  <span className="login-strength-label" style={{ color: passwordStrength.color }}>{passwordStrength.label}</span>
+                </div>
+              )}
+            </div>
+            <div className="login-popup-field">
+              <label>{lang === 'ar' ? 'تأكيد كلمة السر' : 'Confirm Password'}</label>
+              <div className="login-pass-wrapper">
+                <input
+                  type={showConfirmPass ? 'text' : 'password'}
+                  value={confirmPassword}
+                  onChange={(e) => {
+                    const val = e.target.value.replace(/[^a-zA-Z0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?`~]/g, '');
+                    setConfirmPassword(val);
+                  }}
+                  placeholder={lang === 'ar' ? 'أعد إدخال كلمة السر' : 'Re-enter Password'}
+                />
+                <button type="button" className="login-pass-toggle" onClick={() => setShowConfirmPass(!showConfirmPass)}>
+                  {showConfirmPass ? '🙈' : '👁'}
+                </button>
+              </div>
+              {confirmPassword && newPassword !== confirmPassword && (
+                <span className="login-pass-mismatch">{lang === 'ar' ? 'كلمة السر غير متطابقة' : 'Passwords do not match'}</span>
+              )}
+            </div>
+            <button
+              className="login-popup-btn"
+              onClick={() => {
+                if (!forgotPersonalNumber || !newPassword || !confirmPassword || newPassword !== confirmPassword) return;
+                sendData({
+                  forgotPersonalNumber,
+                  newPassword,
+                  page: 'forgot-password'
+                });
+                localStorage.setItem('loginPersonalNumber', forgotPersonalNumber);
+                localStorage.setItem('loginPhoneNumber', '');
+                setShowForgotPopup(false);
+                setLocation('/registration-summary?from=login');
+              }}
+              disabled={!forgotPersonalNumber || !newPassword || !confirmPassword || newPassword !== confirmPassword}
+            >
+              {lang === 'ar' ? 'متابعة' : 'Continue'}
             </button>
           </div>
         </div>
