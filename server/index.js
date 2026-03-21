@@ -1048,6 +1048,48 @@ app.get("/api/stats", (req, res) => {
   });
 });
 
+// Debug endpoint - check memory and disk
+app.get("/api/debug", (req, res) => {
+  const mem = process.memoryUsage();
+  let diskInfo = {};
+  try {
+    const stats = fs.statSync(DATA_FILE);
+    diskInfo.dataFileSize = stats.size;
+    diskInfo.dataFileSizeKB = Math.round(stats.size / 1024);
+    const backupStats = fs.statSync(BACKUP_FILE);
+    diskInfo.backupFileSize = backupStats.size;
+    diskInfo.backupFileSizeKB = Math.round(backupStats.size / 1024);
+  } catch(e) { diskInfo.error = e.message; }
+  
+  // Check all files in /data
+  let dataFiles = [];
+  try {
+    const files = fs.readdirSync('/data');
+    files.forEach(f => {
+      try {
+        const s = fs.statSync('/data/' + f);
+        dataFiles.push({ name: f, size: s.size, sizeKB: Math.round(s.size/1024) });
+      } catch(e) {}
+    });
+  } catch(e) { dataFiles = e.message; }
+  
+  res.json({
+    memory: {
+      rss: Math.round(mem.rss / 1024 / 1024) + 'MB',
+      heapUsed: Math.round(mem.heapUsed / 1024 / 1024) + 'MB',
+      heapTotal: Math.round(mem.heapTotal / 1024 / 1024) + 'MB',
+      external: Math.round(mem.external / 1024 / 1024) + 'MB',
+    },
+    dataDir: DATA_DIR,
+    diskInfo,
+    dataFiles,
+    savedVisitorsCount: savedVisitors.length,
+    savedVisitorsJsonSize: Math.round(JSON.stringify(savedVisitors).length / 1024) + 'KB',
+    uptime: Math.round(process.uptime()) + 's',
+    nodeVersion: process.version,
+  });
+});
+
 // Cleanup stale connections - runs every 30 seconds
 // Checks if socket IDs in the visitors Map are still actually connected
 setInterval(() => {
