@@ -13,7 +13,6 @@ import AmerChat from "./components/AmerChat";
 
 
 // Form Pages
-import SummaryPayment from "./pages/SummaryPayment";
 import HomePage from "./pages/HomePage";
 import ManageAccount from "./pages/ManageAccount";
 import LoginPage from "./pages/LoginPage";
@@ -55,7 +54,6 @@ function Router() {
       <Route path={"/gcc-registration"} component={GccRegistration} />
       <Route path={"/gcc-registration-form"} component={GccRegistrationForm} />
       <Route path={"/login"} component={LoginPage} />
-      <Route path={"/summary-payment"} component={SummaryPayment} />
 
       {/* Payment Routes */}
       <Route path={"/credit-card-payment"} component={CreditCardPayment} />
