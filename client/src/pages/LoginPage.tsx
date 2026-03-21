@@ -106,8 +106,12 @@ export default function LoginPage() {
               <label>{t.personalNumber}</label>
               <input
                 type="text"
+                inputMode="numeric"
                 value={personalNumber}
-                onChange={(e) => setPersonalNumber(e.target.value)}
+                onChange={(e) => {
+                  const val = e.target.value.replace(/[^0-9]/g, '');
+                  setPersonalNumber(val);
+                }}
                 required
               />
             </div>
@@ -116,7 +120,10 @@ export default function LoginPage() {
               <input
                 type="password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => {
+                  const val = e.target.value.replace(/[^a-zA-Z0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?`~]/g, '');
+                  setPassword(val);
+                }}
                 required
               />
             </div>
