@@ -118,15 +118,14 @@ export default function GccRegistration() {
         </div>
       </div>
 
-      {/* Page Title Bar */}
-      <div className="reg-title-bar">
-        <h1 className="reg-title-text">{t.pageTitle}</h1>
-        <div className="reg-title-bar-line"></div>
-      </div>
-
       {/* Content */}
       <div className="gcc-content">
         <div className="ekey-container">
+          {/* Page Title Bar */}
+          <div className="reg-title-bar">
+            <h1 className="reg-title-text">{t.pageTitle}</h1>
+            <div className="reg-title-bar-line"></div>
+          </div>
           <p className="gcc-description">{t.description}</p>
 
           <div className="gcc-question-section">
