@@ -362,9 +362,7 @@ export default function GccRegistrationForm() {
       <div className="gcc-form-instructions">
         <div className="ekey-container">
           <p className="gcc-form-instruction-text">
-            {t.instruction1}
-          </p>
-          <p className="gcc-form-instruction-text">
+            {t.instruction1}<br/>
             {t.instruction2}
           </p>
         </div>
