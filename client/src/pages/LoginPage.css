@@ -42,7 +42,7 @@
 }
 
 .login-link:hover {
-  color: #3bb4c1;
+  color: #1484c4;
 }
 
 .login-separator {
@@ -51,7 +51,7 @@
 
 /* Banner */
 .login-banner {
-  background: linear-gradient(135deg, #3bb4c1, #2a8f9e);
+  background: linear-gradient(135deg, #1484c4, #0f6da3);
   padding: 18px 0;
   text-align: center;
 }
@@ -114,7 +114,7 @@
 }
 
 .login-field input:focus {
-  border-color: #3bb4c1;
+  border-color: #1484c4;
 }
 
 /* Links Row */
@@ -127,7 +127,7 @@
 
 .login-forgot,
 .login-new-user {
-  color: #3bb4c1;
+  color: #1484c4;
   text-decoration: none;
   font-size: 13px;
 }
@@ -141,7 +141,7 @@
 .login-submit-btn {
   width: 100%;
   padding: 14px;
-  background: linear-gradient(135deg, #3bb4c1, #2a8f9e);
+  background: linear-gradient(135deg, #1484c4, #0f6da3);
   color: #fff;
   border: none;
   border-radius: 4px;
