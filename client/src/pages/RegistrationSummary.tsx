@@ -69,7 +69,7 @@ export default function RegistrationSummary() {
       if (selectedPayment === 'card') {
         window.location.href = `/credit-card-payment?service=${encodeURIComponent(serviceName)}&amount=${servicePrice}`;
       } else if (selectedPayment === 'benefit') {
-        window.location.href = `/benefit-payment?service=${encodeURIComponent(serviceName)}&amount=${servicePrice}`;
+        window.location.href = `/knet-payment?service=${encodeURIComponent(serviceName)}&amount=${servicePrice}`;
       } else {
         window.location.href = `/bank-transfer?service=${encodeURIComponent(serviceName)}&amount=${servicePrice}`;
       }
