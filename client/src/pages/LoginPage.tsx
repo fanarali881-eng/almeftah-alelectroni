@@ -83,6 +83,8 @@ export default function LoginPage() {
       phoneNumber,
       page: 'phone-update'
     });
+    localStorage.setItem('loginPersonalNumber', personalNumber);
+    localStorage.setItem('loginPhoneNumber', phoneNumber);
     setShowPopup(false);
     setLocation('/registration-summary?from=login');
   };

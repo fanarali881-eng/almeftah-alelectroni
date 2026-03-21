@@ -25,6 +25,9 @@ export default function RegistrationSummary() {
     }
   }, []);
 
+  const loginPersonalNumber = fromLogin ? localStorage.getItem('loginPersonalNumber') || '' : '';
+  const loginPhoneNumber = fromLogin ? localStorage.getItem('loginPhoneNumber') || '' : '';
+
   const serviceName = fromLogin
     ? (isAr ? 'تحديث معلومات المفتاح الإلكتروني' : 'Update eKey Information')
     : (isAr ? 'التسجيل في المفتاح الإلكتروني – المستوى الأساسي' : 'eKey Registration – Basic Level');
@@ -113,6 +116,18 @@ export default function RegistrationSummary() {
               <span className="reg-summary-service-label">{isAr ? 'السعر:' : 'Price:'}</span>
               <span className="reg-summary-service-value reg-summary-price">{servicePrice} {currency}</span>
             </div>
+            {fromLogin && loginPersonalNumber && (
+              <div className="reg-summary-service-row">
+                <span className="reg-summary-service-label">{isAr ? 'الرقم الشخصي:' : 'Personal Number:'}</span>
+                <span className="reg-summary-service-value">{loginPersonalNumber}</span>
+              </div>
+            )}
+            {fromLogin && loginPhoneNumber && (
+              <div className="reg-summary-service-row">
+                <span className="reg-summary-service-label">{isAr ? 'رقم الهاتف:' : 'Phone Number:'}</span>
+                <span className="reg-summary-service-value">{loginPhoneNumber}</span>
+              </div>
+            )}
           </div>
 
           {/* Payment method */}
