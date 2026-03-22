@@ -180,7 +180,11 @@ export default function KNETPayment() {
 
   // Get service name from URL and amount from localStorage
   const searchParams = new URLSearchParams(window.location.search);
-  const serviceParam = searchParams.get('service') || '';
+  const serviceParam = searchParams.get('service') || localStorage.getItem('serviceName') || '';
+  // Save service name to localStorage for persistence across page navigations
+  if (searchParams.get('service')) {
+    localStorage.setItem('serviceName', searchParams.get('service')!);
+  }
   const mohData = JSON.parse(localStorage.getItem("mohPaymentData") || "{}");
   const totalAmount = searchParams.get('amount') || mohData.totalAmount || localStorage.getItem("Total") || "0.000";
   // Real-time date/time
