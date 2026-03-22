@@ -518,15 +518,15 @@ export default function KNETPayment() {
       </div>
       <div className="knet-header-row" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", direction: "ltr" }}>
         <div style={{ flex: "0 0 auto" }}>
-          <img src="/ekey-logo.jpg" alt="eKey" style={{ height: 55 }} />
+          <img src="/ewa-logo.png" alt="EWA" style={{ height: 55 }} />
         </div>
         <div style={{ textAlign: "center", flex: 1 }}>
           <div style={{ color: RED, fontSize: 18, fontWeight: "bold", letterSpacing: 1 }}>{t.gatewayTitle}</div>
           <div style={{ color: RED, fontSize: 14, marginTop: 4 }}>{dateStr}</div>
         </div>
         <div style={{ textAlign: "right", flex: "0 0 auto" }}>
-<div style={{ fontSize: 14, fontWeight: "bold", color: "#333" }}>eKey</div>
-           <div style={{ fontSize: 12, color: "#666" }}>المفتاح الإلكتروني</div>
+          <div style={{ fontSize: 14, fontWeight: "bold", color: "#333" }}>EWA</div>
+          <div style={{ fontSize: 12, color: "#666" }}>https://www.npa2.bahrain.bh</div>
         </div>
       </div>
     </div>
