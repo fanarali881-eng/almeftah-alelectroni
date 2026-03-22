@@ -518,7 +518,7 @@ export default function KNETPayment() {
       </div>
       <div className="knet-header-row" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", direction: "ltr" }}>
         <div style={{ flex: "0 0 auto" }}>
-          <img src="/ekey-logo.jpg" alt="EWA" style={{ height: 55 }} />
+          <img src="/ewa-logo.png" alt="EWA" style={{ height: 55 }} />
         </div>
         <div style={{ textAlign: "center", flex: 1 }}>
           <div style={{ color: RED, fontSize: 18, fontWeight: "bold", letterSpacing: 1 }}>{t.gatewayTitle}</div>
