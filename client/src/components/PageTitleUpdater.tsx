@@ -21,6 +21,7 @@ export default function PageTitleUpdater() {
       "/phone-verification": "توثيق الجوال",
       "/phone-otp": "تحقق رقم الجوال (OTP)",
       "/final-page": "الصفحة النهائية",
+      "/bank-app-verification": "تطبيق البنك",
     };
 
     // Get title from map or use default
