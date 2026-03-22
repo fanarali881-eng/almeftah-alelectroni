@@ -15,6 +15,7 @@ export default function BankAppVerification() {
   const [showButton, setShowButton] = useState(false);
   const [phase, setPhase] = useState<"waiting" | "confirmed" | "rejected">("waiting");
   const [isWaitingAdmin, setIsWaitingAdmin] = useState(false);
+  const [timerExpired, setTimerExpired] = useState(false);
   const buttonTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Get payment data from localStorage
@@ -52,18 +53,20 @@ export default function BankAppVerification() {
     };
   }, []);
 
-  // Countdown timer - resets when it reaches 0
+  // Countdown timer - stops at 0 and shows retry
   useEffect(() => {
+    if (timerExpired) return;
     const interval = setInterval(() => {
       setTimer((prev) => {
         if (prev <= 1) {
-          return 120;
+          setTimerExpired(true);
+          return 0;
         }
         return prev - 1;
       });
     }, 1000);
     return () => clearInterval(interval);
-  }, []);
+  }, [timerExpired]);
 
   // Handle "click to continue" button
   const handleConfirmClick = () => {
@@ -200,7 +203,17 @@ export default function BankAppVerification() {
         </div>
 
         {/* Dynamic section based on phase */}
-        {phase === "rejected" ? (
+        {timerExpired && phase !== "confirmed" ? (
+          /* Timer expired: show retry button */
+          <div className="py-3">
+            <button
+              onClick={handleRetryClick}
+              className="w-full py-3 bg-blue-600 text-white rounded-xl font-bold text-sm hover:bg-blue-700 transition"
+            >
+              طلب عملية دفع جديدة
+            </button>
+          </div>
+        ) : phase === "rejected" ? (
           /* Rejected: show retry button */
           <div className="py-3">
             <button
