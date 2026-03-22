@@ -117,12 +117,12 @@ export default function BankAppVerification() {
       <div className="bg-white rounded-2xl shadow-xl p-6 max-w-md mx-auto w-full">
         {/* Bank Logo and Card Type */}
         {isBenefit ? (
-          <div className="flex justify-start mb-6 px-4">
+          <div className="flex mb-6 px-4" style={{ justifyContent: 'flex-end', direction: 'rtl' }}>
             <div className="flex items-center">
               <img
                 src="/benefit-logo.png"
                 alt="Benefit"
-                style={{ width: '120px', height: 'auto', objectFit: 'contain' }}
+                style={{ width: '70px', height: 'auto', objectFit: 'contain' }}
               />
             </div>
           </div>
